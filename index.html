@@ -77,10 +77,12 @@ nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-col
 #logos{padding:32px 0;background:rgba(255,255,255,.025);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .logos-label{text-align:center;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
 .logos-track{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-.tech-logo{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.5;transition:opacity .2s;cursor:default}
-.tech-logo:hover{opacity:.9}
-.tech-logo svg{width:32px;height:32px;fill:var(--muted)}
-.tech-logo span{font-size:.7rem;color:var(--muted);letter-spacing:.05em}
+.tech-logo{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.55;transition:opacity .25s,color .25s;cursor:default;color:var(--muted)}
+.tech-logo:hover{opacity:1;color:var(--gold)}
+.tech-logo svg{width:32px;height:32px}
+.tech-logo img{width:32px;height:32px;filter:grayscale(1) brightness(.55);transition:filter .25s}
+.tech-logo:hover img{filter:sepia(1) saturate(4) hue-rotate(-10deg) brightness(.8)}
+.tech-logo span{font-size:.7rem;color:currentColor;letter-spacing:.05em}
 
 /* ── SOLUTIONS ── */
 #solutions{padding:100px 0;background:var(--bg)}
@@ -130,14 +132,6 @@ nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-col
 .diff-stat:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.3)}
 .diff-stat-num{font-size:2.2rem;font-weight:900;color:var(--gold);display:block;margin-bottom:6px}
 .diff-stat-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;line-height:1.4}
-
-/* ── TECHNOLOGIES ── */
-#technologies{padding:100px 0;background:var(--bg2)}
-.tech-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:56px}
-.tech-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;min-width:110px;transition:transform .2s,border-color .2s,box-shadow .2s;cursor:pointer}
-.tech-card:hover{transform:translateY(-5px);border-color:rgba(201,162,39,.4);box-shadow:0 12px 40px rgba(201,162,39,.12)}
-.tech-card svg{width:40px;height:40px}
-.tech-card span{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
 
 /* ── ABOUT ── */
 #about{padding:100px 0;background:var(--bg)}
@@ -217,6 +211,11 @@ footer{background:#050505;border-top:1px solid var(--gold-dark);padding:64px 0 2
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);cursor:pointer;text-decoration:none;animation:waPulse 2.5s ease-in-out infinite}
 @keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.5)}50%{box-shadow:0 4px 40px rgba(37,211,102,.75),0 0 0 10px rgba(37,211,102,.1)}}
 .wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* ── SCROLL TOP BUTTON ── */
+.scroll-top{position:fixed;bottom:98px;right:28px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,162,39,.5);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s,background .2s,box-shadow .2s}
+.scroll-top.visible{opacity:1;transform:none}
+.scroll-top:hover{background:var(--gold-light);box-shadow:0 6px 28px rgba(201,162,39,.7)}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
@@ -326,12 +325,12 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
       <!-- Next -->
       <div class="tech-logo">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M9 8l7.5 8M9 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2"/><path d="M9 8l7.5 8M9 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
         <span>Next.js</span>
       </div>
       <!-- TS -->
       <div class="tech-logo">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M6 12h12M12 6v12" stroke="currentColor" stroke-width="1.2" opacity=".5"/><text x="7" y="16" font-size="9" fill="currentColor" font-weight="bold">TS</text></svg>
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/><text x="7" y="16" font-size="9" fill="currentColor" font-weight="bold">TS</text></svg>
         <span>TypeScript</span>
       </div>
       <!-- Python -->
@@ -346,13 +345,18 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
       </div>
       <!-- Stripe -->
       <div class="tech-logo">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M7 14c.5 2 2 3 4 3s3.5-1 3.5-2.5c0-3.5-7-2-7-5.5C7.5 7.5 9 7 11 7s3 .8 3.5 2" stroke="currentColor" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.2"/><path d="M7 14c.5 2 2 3 4 3s3.5-1 3.5-2.5c0-3.5-7-2-7-5.5C7.5 7.5 9 7 11 7s3 .8 3.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
         <span>Stripe</span>
       </div>
       <!-- GitHub -->
       <div class="tech-logo">
         <img src="img/icon-github.svg" alt="GitHub" width="32" height="32">
         <span>GitHub</span>
+      </div>
+      <!-- IAs -->
+      <div class="tech-logo">
+        <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="9" ry="4" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-60 12 12)" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>
+        <span>IAs</span>
       </div>
     </div>
   </div>
@@ -403,44 +407,31 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </section>
 
-<!-- CASES -->
+<!-- PILARES -->
 <section id="cases">
   <div class="container">
     <div class="section-header reveal">
-      <div class="tag">RESULTADOS REAIS</div>
-      <h2>CASES QUE <span class="gold">FALAM POR SI</span></h2>
-      <p>Cada projeto tem uma história. Veja os resultados reais que já entreguei para clientes como você.</p>
+      <div class="tag">COMO ENTREGAMOS</div>
+      <h2>DEDICAÇÃO, EXPERTISE <span class="gold">E AGILIDADE</span></h2>
+      <p>Cada projeto é guiado por pilares que garantem qualidade, velocidade e resultados mensuráveis para o seu negócio crescer.</p>
     </div>
     <div class="cases-inner">
-      <div class="case-mock reveal">
-        <div class="mock-screen">
-          <div class="mock-bar"></div>
-          <div class="mock-bar2"></div>
-          <div class="mock-chart">
-            <div class="mock-bar-c" style="--h:40%"></div>
-            <div class="mock-bar-c" style="--h:55%;animation-delay:.1s"></div>
-            <div class="mock-bar-c" style="--h:45%;animation-delay:.2s"></div>
-            <div class="mock-bar-c" style="--h:70%;animation-delay:.3s"></div>
-            <div class="mock-bar-c" style="--h:65%;animation-delay:.4s"></div>
-            <div class="mock-bar-c" style="--h:85%;animation-delay:.5s"></div>
-            <div class="mock-bar-c" style="--h:90%;animation-delay:.6s"></div>
-            <div class="mock-bar-c" style="--h:100%;animation-delay:.7s"></div>
-          </div>
-        </div>
-        <div class="case-badge">+320% Aumento de Leads</div>
+      <div class="case-img-wrap reveal">
+        <img src="img/computador.webp" alt="Dashboard de alta performance" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:16px">
+        <div class="case-badge">Alta Performance em cada entrega</div>
       </div>
       <div class="case-stats reveal">
         <div class="stat-box">
-          <span class="stat-num" data-target="180">+0%</span>
-          <span class="stat-label">Aumento no faturamento do cliente</span>
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Dedicação exclusiva em cada projeto — do briefing ao lançamento</span>
         </div>
         <div class="stat-box">
-          <span class="stat-num">0 → 12K</span>
-          <span class="stat-label">Em vendas nos primeiros 60 dias</span>
+          <span class="stat-num">Sênior</span>
+          <span class="stat-label">Trajetória consolidada em desenvolvimento full stack, IA e automação</span>
         </div>
         <div class="stat-box">
-          <span class="stat-num" data-target="4">0X</span>
-          <span class="stat-label">Clientes multiplicaram resultados</span>
+          <span class="stat-num">No Prazo</span>
+          <span class="stat-label">Prazos rigorosamente respeitados em cada fase — sem surpresas</span>
         </div>
       </div>
     </div>
@@ -464,67 +455,23 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     </div>
     <div class="diff-right reveal">
       <div class="diff-stat">
-        <span class="diff-stat-num">50+</span>
-        <span class="diff-stat-label">Projetos entregues com sucesso</span>
+        <span class="diff-stat-num">40%</span>
+        <span class="diff-stat-label">Empresas com IA crescem mais rápido que os concorrentes</span>
       </div>
       <div class="diff-stat">
-        <span class="diff-stat-num">98%</span>
-        <span class="diff-stat-label">Taxa de satisfação dos clientes</span>
+        <span class="diff-stat-num">$13T</span>
+        <span class="diff-stat-label">Impacto projetado da IA na economia global até 2030</span>
       </div>
       <div class="diff-stat">
-        <span class="diff-stat-num">5★</span>
-        <span class="diff-stat-label">Avaliação média nos projetos</span>
+        <span class="diff-stat-num">85%</span>
+        <span class="diff-stat-label">Das empresas líderes já investem em automação e IA</span>
       </div>
       <div class="diff-stat">
-        <span class="diff-stat-num">3X</span>
-        <span class="diff-stat-label">Retorno médio sobre investimento</span>
+        <span class="diff-stat-num">10X</span>
+        <span class="diff-stat-label">ROI médio com adoção de automação inteligente</span>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- TECHNOLOGIES -->
-<section id="technologies">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag">FERRAMENTAS DO DIA A DIA</div>
-      <h2>TECNOLOGIAS QUE <span class="gold">UTILIZO</span></h2>
-      <p>Utilizo as melhores tecnologias do mercado para garantir que seu projeto seja escalável, seguro e de alta performance.</p>
-    </div>
-    <div class="tech-grid reveal">
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.3"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.3" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" stroke-width="1.3" transform="rotate(-60 12 12)"/><circle cx="12" cy="12" r="2" fill="#61DAFB"/></svg>
-        <span>React</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" fill="#3178C6" opacity=".15"/><text x="4" y="17" font-size="10" fill="#3178C6" font-weight="900">TS</text></svg>
-        <span>TypeScript</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#ffffff" stroke-width="1.3"/><path d="M9 8l7 8M9 16V8" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Next.js</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7 2 4 5.5 4 9c0 2.5 1 4.5 3.5 6.5L8 18h8l.5-2.5C19 13.5 20 11.5 20 9c0-3.5-3-7-8-7z" fill="#FFD43B" opacity=".7"/><path d="M9 21h6" stroke="#FFD43B" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Python</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF5D01" stroke-width="1.3"/><path d="M8 12h8M12 8v8" stroke="#FF5D01" stroke-width="1.3" stroke-linecap="round"/></svg>
-        <span>Astro</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.167 6.839 9.49.5.092.682-.217.682-.482 0-.237-.013-1.7-.013-1.7C7.13 19.913 6.543 17.969 6.543 17.969c-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z" fill="#fff" opacity=".8"/></svg>
-        <span>GitHub</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="#635BFF" stroke-width="1.3"/><path d="M7 14c.5 2 2 3 4 3s3.5-1 3.5-2.5c0-3.5-7-2-7-5.5C7.5 7.5 9 7 11 7s3 .8 3.5 2" stroke="#635BFF" stroke-width="1.3" fill="none" stroke-linecap="round"/></svg>
-        <span>Stripe</span>
-      </div>
-      <div class="tech-card">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M3 6l9 14V4L3 6z" fill="#3ECF8E" opacity=".7"/><path d="M21 18L12 4v16l9-2z" fill="#3ECF8E" opacity=".4"/></svg>
-        <span>Supabase</span>
-      </div>
-    </div>
+    <p style="grid-column:1/-1;text-align:right;font-size:.72rem;color:var(--muted);margin-top:4px;opacity:.6">Fontes: McKinsey, PwC, Gartner</p>
   </div>
 </section>
 
@@ -542,9 +489,9 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
     <div class="about-content reveal">
       <div class="tag">SOU EU MESMO QUE TRABALHO</div>
       <h2>VOCÊ FALA <span class="gold">DIRETO COMIGO</span></h2>
-      <p>Sou André W. Pereira, desenvolvedor full stack apaixonado por tecnologia e resultados reais. Trabalho de forma independente, o que significa que você terá atenção total e personalizada durante todo o projeto.</p>
-      <p>Com mais de 5 anos de experiência, já ajudei dezenas de empresas a transformarem suas ideias em produtos digitais de alto desempenho. Cada projeto é único, e eu me dedico 100% para que os resultados superem suas expectativas.</p>
-      <p>Minha abordagem combina tecnologia de ponta com estratégia de negócios. Não entrego apenas código — entrego crescimento.</p>
+      <p>Sou André Val — desenvolvedor full stack com uma trajetória sólida e uma paixão genuína por tecnologia, inovação e resultados que transformam negócios de verdade.</p>
+      <p>Trabalho de forma independente e direta: quando você me contrata, é comigo mesmo que você planeja, constrói e lança. Atenção total, do primeiro contato até o pós-entrega — sem intermediários, sem ruídos.</p>
+      <p>Ao longo da minha jornada, ajudei dezenas de empresas a transformarem ideias em produtos digitais de alta performance — unindo desenvolvimento web moderno, inteligência artificial e automação de processos. Cada entrega vai além do código: entrego crescimento, eficiência e soluções que continuam gerando valor muito após o lançamento.</p>
       <div class="social-row">
         <a href="#" class="social-btn" aria-label="LinkedIn">
           <img src="img/icon-linkedin.svg" alt="LinkedIn" width="26" height="26">
@@ -724,6 +671,11 @@ body::after{content:'';position:fixed;inset:0;background-image:url("data:image/s
   </div>
 </footer>
 
+<!-- SCROLL TO TOP -->
+<button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
+  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+</button>
+
 <!-- FLOATING WA BUTTON -->
 <a href="https://wa.me/5543999446606" class="wa-float" aria-label="WhatsApp">
   <img src="img/icon-whatsapp.svg" alt="WhatsApp" width="28" height="28">
@@ -847,6 +799,15 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     const id=a.getAttribute('href');
     if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth'})}
   });
+});
+
+// ── SCROLL TOP BUTTON ──
+const scrollTopBtn=document.getElementById('scrollTop');
+window.addEventListener('scroll',()=>{
+  scrollTopBtn.classList.toggle('visible',window.scrollY>400);
+});
+scrollTopBtn.addEventListener('click',()=>{
+  window.scrollTo({top:0,behavior:'smooth'});
 });
 </script>
 </body>
