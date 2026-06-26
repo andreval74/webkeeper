@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "wordpress-webkeeper": {
+      "command": "npx",
+      "args": ["-y", "claudeus-wp-mcp"],
+      "env": {
+        "WP_SITES_PATH": "C:\\Users\\User\\.claude\\wp-sites.json"
+      }
+    }
+  }
+}
