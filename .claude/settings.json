@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --version)",
+      "Bash(npx -y @msrbuilds/emcp-proxy@1.8.2 --help)",
+      "Bash(npx -y claudeus-wp-mcp --help)",
+      "PowerShell(Test-Path \"C:\\\\tmp\"; if \\(!\\(Test-Path \"C:\\\\tmp\"\\)\\) { New-Item -ItemType Directory -Path \"C:\\\\tmp\" -Force })",
+      "PowerShell($env:WP_URL = \"https://webkeeper.com.br\"; $env:WP_USERNAME = \"andreval74\"; $env:WP_APP_PASSWORD = \"klGC xoSA YvEP omvy lPqm P15K\"; $env:MCP_PROTOCOL_VERSION = \"2024-11-05\"; $env:MCP_LOG_FILE = \"C:\\\\tmp\\\\elementor-mcp-debug.log\"; $proc = Start-Process -FilePath \"npx\" -ArgumentList \"-y\",\"@msrbuilds/emcp-proxy@1.8.2\" -PassThru -NoNewWindow -RedirectStandardOutput \"C:\\\\tmp\\\\mcp-stdout.txt\" -RedirectStandardError \"C:\\\\tmp\\\\mcp-stderr.txt\"; Start-Sleep -Seconds 5; $proc.Kill\\(\\); Get-Content \"C:\\\\tmp\\\\mcp-stdout.txt\" -ErrorAction SilentlyContinue; Write-Host \"---STDERR---\"; Get-Content \"C:\\\\tmp\\\\mcp-stderr.txt\" -ErrorAction SilentlyContinue)",
+      "PowerShell($npxPath = \\(Get-Command npx\\).Source; Write-Host \"NPX path: $npxPath\")",
+      "Read(//c/Program Files/nodejs/**)"
+    ]
+  }
+}
