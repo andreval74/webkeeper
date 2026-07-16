@@ -1,946 +1,1245 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WebKeeper | Desenvolvimento Full Stack, Web3, IA &amp; Automação — Londrina, PR</title>
-
-<!-- ── SEO CORE ── -->
-<meta name="description" content="WebKeeper — Tecnologia sob medida em Londrina-PR. Desenvolvimento Web, Automação com IA, Smart Contracts, Blockchain e Marketing Digital. Especialista: André Val. Solicite orçamento via WhatsApp.">
-<meta name="keywords" content="WebKeeper, desenvolvimento web Londrina, desenvolvedor full stack Londrina, automação inteligente, chatbot IA, smart contracts Brasil, blockchain Londrina, Web3, sistemas web Londrina, sites profissionais Londrina, marketing digital Londrina, landing page alta conversão, tokenização ativos, NFT, André Val">
-<meta name="author" content="WebKeeper">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="#C9A227">
-<link rel="canonical" href="https://webkeeper.com.br/">
-
-<!-- ── GEO / LOCAL SEO ── -->
-<meta name="geo.region" content="BR-PR">
-<meta name="geo.placename" content="Londrina, Paraná, Brasil">
-<meta name="geo.position" content="-23.3045;-51.1696">
-<meta name="ICBM" content="-23.3045, -51.1696">
-
-<!-- ── OPEN GRAPH ── -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://webkeeper.com.br/">
-<meta property="og:title" content="WebKeeper | Desenvolvimento Full Stack, Web3, IA &amp; Automação">
-<meta property="og:description" content="Tecnologia sob medida em Londrina-PR. Sistemas, Automação com IA, Smart Contracts, Blockchain e Marketing Digital — especialista André Val. Atendimento remoto para todo o Brasil.">
-<meta property="og:image" content="https://webkeeper.com.br/img/computador.webp">
-<meta property="og:image:width" content="1456">
-<meta property="og:image:height" content="816">
-<meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="WebKeeper">
-
-<!-- ── TWITTER CARD ── -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="WebKeeper | Desenvolvimento Full Stack, Web3, IA &amp; Automação">
-<meta name="twitter:description" content="Tecnologia sob medida em Londrina-PR. Sistemas, Automação com IA, Smart Contracts, Blockchain e Marketing Digital — especialista André Val.">
-<meta name="twitter:image" content="https://webkeeper.com.br/img/computador.webp">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<style>
-:root{
-  --gold:#C9A227;
-  --gold-light:#E8C04A;
-  --gold-dark:#A07D10;
-  --bg:#0a0a0a;
-  --bg2:#111111;
-  --bg3:#161616;
-  --text:#ffffff;
-  --muted:#AAAAAA;
-  --card:#141414;
-  --border:#222222;
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
-
-/* ── CANVAS PARTICLES ── */
-#particles-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:.55}
-
-/* ── UTIL ── */
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
-.tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);background:rgba(201,162,39,.08);padding:6px 14px;border-radius:20px;margin-bottom:18px}
-.gold{color:var(--gold)}
-section{position:relative;z-index:1}
-
-/* ── NAVBAR ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
-nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);border-color:rgba(201,162,39,.15)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:1.25rem;font-weight:800;color:#fff;letter-spacing:-.01em}
-.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:900;color:#000;font-size:1.1rem;box-shadow:0 0 20px rgba(201,162,39,.5)}
-.nav-links{display:flex;align-items:center;gap:28px;list-style:none}
-.nav-links a{text-decoration:none;color:var(--muted);font-size:.9rem;font-weight:500;transition:color .2s}
-.nav-links a:hover{color:#fff}
-.btn-gold{background:var(--gold);color:#000;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;letter-spacing:.02em;white-space:nowrap}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 32px rgba(201,162,39,.45)}
-.btn-outline{background:transparent;color:#fff;font-weight:700;font-size:.88rem;padding:11px 22px;border-radius:8px;text-decoration:none;border:1px solid rgba(255,255,255,.4);cursor:pointer;transition:all .2s}
-.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.07)}
-.nav-menu-btn{display:none;background:none;border:none;cursor:pointer;color:#fff;padding:4px}
-
-/* ── HERO ── */
-#hero{min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
-.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-.hero-label{font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-dark);background:rgba(201,162,39,.08);padding:7px 16px;border-radius:20px;display:inline-block;margin-bottom:28px}
-.hero h1{font-size:clamp(2.8rem,5.5vw,5rem);font-weight:900;line-height:1.05;letter-spacing:-.03em;margin-bottom:24px;text-transform:uppercase}
-.hero p{font-size:1.05rem;color:var(--muted);max-width:500px;margin-bottom:36px;line-height:1.7}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
-.hero-social{display:flex;align-items:center;gap:14px}
-.stars{display:flex;gap:3px}
-.star{color:var(--gold);font-size:1rem}
-.hero-rating{font-size:.85rem;color:var(--muted)}
-.hero-rating strong{color:#fff}
-
-/* GOLDEN W */
-.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;min-height:520px}
-.big-w-wrap{position:relative;z-index:2}
-.big-w{font-size:clamp(220px,28vw,380px);font-weight:900;color:transparent;background:linear-gradient(135deg,#C9A227 0%,#F0D060 40%,#C9A227 60%,#7A5C00 100%);-webkit-background-clip:text;background-clip:text;line-height:1;display:block;filter:drop-shadow(0 0 60px rgba(201,162,39,.6));animation:floatW 4s ease-in-out infinite}
-@keyframes floatW{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
-.glow-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:420px;height:420px;border-radius:50%;background:radial-gradient(ellipse at center,rgba(201,162,39,.18) 0%,transparent 70%);animation:pulseGlow 3s ease-in-out infinite}
-@keyframes pulseGlow{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.7}50%{transform:translate(-50%,-50%) scale(1.12);opacity:1}}
-.orbit{position:absolute;top:50%;left:50%;border:1px solid rgba(201,162,39,.15);border-radius:50%;transform:translate(-50%,-50%)}
-.orbit-1{width:460px;height:460px;animation:spin 18s linear infinite}
-.orbit-2{width:560px;height:560px;animation:spin 28s linear infinite reverse}
-.orbit-dot{position:absolute;width:8px;height:8px;background:var(--gold);border-radius:50%;box-shadow:0 0 12px var(--gold);top:-4px;left:50%;transform:translateX(-50%)}
-@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
-
-/* ── LOGOS BAR ── */
-#logos{padding:32px 0;background:rgba(255,255,255,.025);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.logos-label{text-align:center;font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
-.logos-track{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
-.tech-logo{display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.55;transition:opacity .25s,color .25s;cursor:default;color:var(--muted)}
-.tech-logo:hover{opacity:1;color:var(--gold)}
-.tech-logo svg{width:32px;height:32px}
-.tech-logo img{width:32px;height:32px;filter:grayscale(1) brightness(.55);transition:filter .25s}
-.tech-logo:hover img{filter:sepia(1) saturate(4) hue-rotate(-10deg) brightness(.8)}
-.tech-logo span{font-size:.7rem;color:currentColor;letter-spacing:.05em}
-
-/* ── SOLUTIONS ── */
-#solutions{padding:100px 0;background:var(--bg)}
-.section-header{text-align:center;margin-bottom:64px}
-.section-header h2{font-size:clamp(2rem,3.5vw,3rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:16px}
-.section-header p{color:var(--muted);max-width:560px;margin:0 auto;font-size:1rem}
-.cards-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.sol-card{background:var(--card);border:1px solid var(--border);border-top:2px solid var(--gold);border-radius:12px;padding:32px 24px;transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer;position:relative;overflow:hidden}
-.sol-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,162,39,.04) 0%,transparent 60%);opacity:0;transition:opacity .3s}
-.sol-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(201,162,39,.15);border-color:rgba(201,162,39,.5)}
-.sol-card:hover::before{opacity:1}
-.sol-icon{width:48px;height:48px;background:rgba(201,162,39,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.sol-icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.8}
-.sol-card h3{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
-.sol-card p{color:var(--muted);font-size:.88rem;line-height:1.65;margin-bottom:20px}
-.sol-more{color:var(--gold);font-size:.85rem;font-weight:700;text-decoration:none;letter-spacing:.03em;transition:gap .2s;display:inline-flex;align-items:center;gap:4px}
-.sol-more:hover{gap:8px}
-
-/* ── CASES ── */
-#cases{padding:100px 0;background:var(--bg2)}
-.cases-inner{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.case-img-wrap{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border)}
-.case-img-wrap img,.case-mock{width:100%;aspect-ratio:16/10;object-fit:cover;background:linear-gradient(135deg,#111 0%,#1a1a1a 100%);display:flex;align-items:center;justify-content:center}
-.case-mock{border-radius:16px;position:relative;overflow:hidden}
-.mock-screen{width:100%;height:100%;background:#0d0d0d;padding:24px;display:flex;flex-direction:column;gap:12px;min-height:280px}
-.mock-bar{height:8px;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold-light));width:70%}
-.mock-bar2{height:8px;border-radius:4px;background:rgba(255,255,255,.1);width:50%}
-.mock-chart{flex:1;display:flex;align-items:flex-end;gap:6px;padding-top:12px}
-.mock-bar-c{flex:1;background:linear-gradient(to top,var(--gold),rgba(201,162,39,.3));border-radius:4px 4px 0 0;animation:grow 2s ease-out forwards}
-@keyframes grow{from{height:10%}to{height:var(--h)}}
-.case-badge{position:absolute;bottom:20px;left:20px;background:rgba(201,162,39,.9);color:#000;font-weight:800;font-size:.85rem;padding:10px 18px;border-radius:8px;backdrop-filter:blur(8px)}
-.case-stats{display:flex;flex-direction:column;gap:16px}
-.stat-box{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:10px;padding:20px 24px;transition:transform .2s,box-shadow .2s}
-.stat-box:hover{transform:translateX(6px);box-shadow:-4px 0 30px rgba(201,162,39,.15)}
-.stat-num{font-size:2rem;font-weight:900;color:var(--gold);line-height:1;display:block;margin-bottom:4px}
-.stat-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-
-/* ── DIFFERENTIALS ── */
-#differentials{padding:100px 0;background:var(--bg)}
-.diff-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.diff-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:28px 0 36px}
-.diff-list li{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:.95rem}
-.check{width:22px;height:22px;background:rgba(201,162,39,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.check svg{width:12px;height:12px;stroke:var(--gold);fill:none;stroke-width:2.5}
-.diff-right{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.diff-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;transition:transform .2s,border-color .2s}
-.diff-stat:hover{transform:translateY(-4px);border-color:rgba(201,162,39,.3)}
-.diff-stat-num{font-size:2.2rem;font-weight:900;color:var(--gold);display:block;margin-bottom:6px}
-.diff-stat-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;line-height:1.4}
-
-/* ── ABOUT ── */
-#about{padding:100px 0;background:var(--bg)}
-.about-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:72px;align-items:center}
-.about-photo{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,#1a1a1a,#0d0d0d);border:1px solid var(--border)}
-.about-photo-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 50%)}
-.photo-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;color:var(--muted)}
-.person-svg{width:120px;height:120px;opacity:.3}
-.about-content h2{font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:20px}
-.about-content p{color:var(--muted);font-size:.95rem;line-height:1.75;margin-bottom:16px}
-.social-row{display:flex;gap:12px;margin:28px 0 32px}
-.social-btn{width:44px;height:44px;border-radius:8px;background:var(--card);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,background .2s}
-.social-btn:hover{border-color:var(--gold);background:rgba(201,162,39,.08)}
-.social-btn svg{width:20px;height:20px;fill:var(--muted)}
-.social-btn:hover svg{fill:var(--gold)}
-
-/* ── PROCESS ── */
-#process{padding:100px 0;background:var(--bg2)}
-.process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:64px;position:relative}
-.process-steps::before{content:'';position:absolute;top:52px;left:16.6%;right:16.6%;height:1px;background:linear-gradient(90deg,transparent,var(--gold-dark),var(--gold),var(--gold-dark),transparent)}
-.process-step{text-align:center;padding:0 24px;position:relative}
-.step-num{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:900;color:#000;margin:0 auto 24px;position:relative;z-index:2;box-shadow:0 0 40px rgba(201,162,39,.4)}
-.process-step h3{font-size:1rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px}
-.process-step p{color:var(--muted);font-size:.88rem;line-height:1.65}
-
-/* ── PRICING ── */
-#pricing{padding:100px 0;background:var(--bg)}
-.pricing-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.pricing-left h2{font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:900;text-transform:uppercase;letter-spacing:-.02em;margin-bottom:28px}
-.pricing-features{list-style:none;display:flex;flex-direction:column;gap:14px}
-.pricing-features li{display:flex;align-items:flex-start;gap:12px;color:var(--muted);font-size:.93rem;line-height:1.5}
-.pricing-card{background:var(--card);border:1px solid var(--gold-dark);border-radius:16px;padding:40px 36px;position:relative;overflow:hidden}
-.pricing-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold-dark),var(--gold),var(--gold-dark))}
-.pricing-card h3{font-size:1.4rem;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:14px}
-.pricing-card p{color:var(--muted);font-size:.93rem;margin-bottom:32px;line-height:1.65}
-
-/* ── FAQ ── */
-#faq{padding:100px 0;background:var(--bg2)}
-.faq-list{max-width:760px;margin:64px auto 0;display:flex;flex-direction:column;gap:12px}
-.faq-item{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:border-color .2s}
-.faq-item.open{border-color:rgba(201,162,39,.35)}
-.faq-q{width:100%;background:none;border:none;text-align:left;padding:22px 24px;font-family:inherit;font-size:.97rem;font-weight:600;color:#fff;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
-.faq-icon{width:28px;height:28px;border-radius:6px;background:rgba(201,162,39,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s,transform .3s}
-.faq-item.open .faq-icon{background:var(--gold);transform:rotate(45deg)}
-.faq-icon svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2.5}
-.faq-item.open .faq-icon svg{stroke:#000}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .3s}
-.faq-a-inner{padding:0 24px 22px;color:var(--muted);font-size:.92rem;line-height:1.7}
-.faq-item.open .faq-a{max-height:300px}
-
-/* ── FINAL CTA ── */
-#cta-final{padding:120px 0;text-align:center;position:relative;overflow:hidden}
-#cta-final::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(ellipse,rgba(201,162,39,.12) 0%,transparent 70%);pointer-events:none}
-#cta-final h2{font-size:clamp(2.5rem,5vw,4.5rem);font-weight:900;text-transform:uppercase;letter-spacing:-.03em;margin-bottom:24px;line-height:1.05}
-#cta-final h2 em{color:var(--gold);font-style:normal}
-#cta-final p{color:var(--muted);font-size:1.05rem;max-width:540px;margin:0 auto 40px;line-height:1.7}
-
-/* ── FOOTER ── */
-footer{background:#050505;border-top:1px solid var(--gold-dark);padding:64px 0 28px}
-.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:56px}
-.footer-brand p{color:var(--muted);font-size:.88rem;margin-top:14px;line-height:1.65;max-width:240px}
-.footer-col h4{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:18px}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
-.footer-col ul a{color:var(--muted);text-decoration:none;font-size:.88rem;transition:color .2s}
-.footer-col ul a:hover{color:#fff}
-.footer-bottom{border-top:1px solid var(--border);padding-top:24px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-.footer-bottom p{color:var(--muted);font-size:.82rem}
-.footer-links{display:flex;gap:20px}
-.footer-links a{color:var(--muted);text-decoration:none;font-size:.82rem;transition:color .2s}
-.footer-links a:hover{color:var(--gold)}
-
-/* ── SCROLL REVEAL ── */
-.reveal{opacity:0;transform:translateY(32px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:none}
-
-/* ── FLOATING WA BUTTON ── */
-.wa-float{position:fixed;bottom:28px;right:28px;z-index:200;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(37,211,102,.5);cursor:pointer;text-decoration:none;animation:waPulse 2.5s ease-in-out infinite}
-@keyframes waPulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,.5)}50%{box-shadow:0 4px 40px rgba(37,211,102,.75),0 0 0 10px rgba(37,211,102,.1)}}
-.wa-float svg{width:30px;height:30px;fill:#fff}
-
-/* ── SCROLL TOP BUTTON ── */
-.scroll-top{position:fixed;bottom:98px;right:28px;z-index:200;width:48px;height:48px;border-radius:50%;background:var(--gold);color:#000;display:flex;align-items:center;justify-content:center;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(201,162,39,.5);opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s,background .2s,box-shadow .2s}
-.scroll-top.visible{opacity:1;transform:none}
-.scroll-top:hover{background:var(--gold-light);box-shadow:0 6px 28px rgba(201,162,39,.7)}
-
-/* ── RESPONSIVE ── */
-@media(max-width:1024px){
-  .cards-grid{grid-template-columns:repeat(2,1fr)}
-  .hero-inner,.cases-inner,.diff-inner,.about-inner,.pricing-inner{grid-template-columns:1fr}
-  .hero-visual{display:none}
-  .footer-grid{grid-template-columns:1fr 1fr}
-  .process-steps{grid-template-columns:1fr;gap:40px}
-  .process-steps::before{display:none}
-}
-@media(max-width:768px){
-  .nav-links{display:none}
-  .nav-menu-btn{display:block}
-  .cards-grid{grid-template-columns:1fr}
-  .diff-right{grid-template-columns:1fr 1fr}
-  .tech-grid{gap:12px}
-  .footer-grid{grid-template-columns:1fr}
-}
-
-/* ── COUNTER ANIMATION ── */
-@keyframes countUp{from{opacity:0}to{opacity:1}}
-.count-animated{animation:countUp .5s ease-out forwards}
-
-/* ── GLITCH TEXT EFFECT ── */
-.glitch{position:relative}
-.glitch::before,.glitch::after{content:attr(data-text);position:absolute;top:0;left:0;width:100%;height:100%}
-.glitch::before{color:var(--gold);animation:glitch1 4s infinite;clip-path:polygon(0 0,100% 0,100% 45%,0 45%);opacity:0}
-.glitch::after{color:rgba(201,162,39,.6);animation:glitch2 4s infinite;clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);opacity:0}
-@keyframes glitch1{0%,90%,100%{opacity:0;transform:none}92%{opacity:.7;transform:translate(-3px,0)}94%{opacity:0}}
-@keyframes glitch2{0%,90%,100%{opacity:0;transform:none}92%{opacity:.5;transform:translate(3px,0)}94%{opacity:0}}
-
-/* ── NOISE OVERLAY ── */
-body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
 </head>
 <body>
-
-<canvas id="particles-canvas"></canvas>
-
-<!-- NAVBAR -->
-<nav id="navbar">
-  <div class="container nav-inner">
-    <a href="#" class="logo">
-      <img src="img/logo-webkeeper.svg" alt="WebKeeper" width="36" height="36">
-      WebKeeper
-    </a>
-    <ul class="nav-links">
-      <li><a href="#hero">Início</a></li>
-      <li><a href="#cases">Casos</a></li>
-      <li><a href="#solutions">Serviços</a></li>
-      <li><a href="#technologies">Tecnologias</a></li>
-      <li><a href="#about">Depoimentos</a></li>
-      <li><a href="#faq">FAQ</a></li>
-    </ul>
-    <a href="https://wa.me/5543999446606" class="btn-gold">FALAR NO WHATSAPP</a>
-    <button class="nav-menu-btn" aria-label="Menu">
-      <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="container hero-inner">
-    <div class="hero-left reveal">
-      <div class="hero-label">DESENVOLVIMENTO WEB PARA EMPRESAS PRÓSPERAS</div>
-      <h1 class="glitch" data-text="TECNOLOGIA SOB MEDIDA. RESULTADOS REAIS.">
-        TECNOLOGIA SOB<br>MEDIDA.<br><span class="gold">RESULTADOS REAIS.</span>
-      </h1>
-      <p>Sou André Val. Desenvolvo soluções completas e personalizadas que transformam seu negócio online com automação, inteligência artificial e alta performance.</p>
-      <div class="hero-btns">
-        <a href="https://wa.me/5543999446606" class="btn-gold">FALAR NO WHATSAPP</a>
-        <a href="#cases" class="btn-outline">VER CASOS DE SUCESSO</a>
-      </div>
-      <div class="hero-social">
-        <div class="stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <span class="hero-rating"><strong>4.9/5</strong> • 4.9 estrelas de clientes reais</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="orbit orbit-2"><div class="orbit-dot"></div></div>
-      <div class="orbit orbit-1"><div class="orbit-dot"></div></div>
-      <div class="glow-ring"></div>
-      <div class="big-w-wrap">
-        <span class="big-w">W</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOGOS BAR -->
-<div id="logos">
-  <div class="container">
-    <p class="logos-label">Tecnologias &amp; Parceiros</p>
-    <div class="logos-track">
-      <!-- React -->
-      <div class="tech-logo">
-        <img src="img/tech-react.svg" alt="React" width="32" height="32">
-        <span>React</span>
-      </div>
-      <!-- Node -->
-      <div class="tech-logo">
-        <img src="img/tech-nodes.svg" alt="Node.js" width="32" height="32">
-        <span>Node.js</span>
-      </div>
-      <!-- Next -->
-      <div class="tech-logo">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.2"/><path d="M9 8l7.5 8M9 16V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        <span>Next.js</span>
-      </div>
-      <!-- TS -->
-      <div class="tech-logo">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="3" stroke="currentColor" stroke-width="1.2"/><text x="7" y="16" font-size="9" fill="currentColor" font-weight="bold">TS</text></svg>
-        <span>TypeScript</span>
-      </div>
-      <!-- Python -->
-      <div class="tech-logo">
-        <img src="img/tech-ai.svg" alt="Python" width="32" height="32">
-        <span>Python</span>
-      </div>
-      <!-- Supabase -->
-      <div class="tech-logo">
-        <img src="img/tech-db.svg" alt="Supabase" width="32" height="32">
-        <span>Supabase</span>
-      </div>
-      <!-- Stripe -->
-      <div class="tech-logo">
-        <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="4" stroke="currentColor" stroke-width="1.2"/><path d="M7 14c.5 2 2 3 4 3s3.5-1 3.5-2.5c0-3.5-7-2-7-5.5C7.5 7.5 9 7 11 7s3 .8 3.5 2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-        <span>Stripe</span>
-      </div>
-      <!-- GitHub -->
-      <div class="tech-logo">
-        <img src="img/icon-github.svg" alt="GitHub" width="32" height="32">
-        <span>GitHub</span>
-      </div>
-      <!-- IAs -->
-      <div class="tech-logo">
-        <svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="9" ry="4" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(60 12 12)" stroke="currentColor" stroke-width="1.2"/><ellipse cx="12" cy="12" rx="9" ry="4" transform="rotate(-60 12 12)" stroke="currentColor" stroke-width="1.2"/><circle cx="12" cy="12" r="1.8" fill="currentColor" stroke="none"/></svg>
-        <span>IAs</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SOLUTIONS -->
-<section id="solutions">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag">O QUE EU FAÇO</div>
-      <h2>SOLUÇÕES QUE <span class="gold">GERAM IMPACTO</span></h2>
-      <p>Trabalho diretamente com você para entender seus objetivos e entregar a solução certa para o seu negócio.</p>
-    </div>
-    <div class="cards-grid">
-      <div class="sol-card reveal">
-        <div class="sol-icon">
-          <img src="img/thumb-auto.svg" alt="Automação" width="32" height="32">
-        </div>
-        <h3>Automação</h3>
-        <p>Elimino tarefas repetitivas e crio fluxos inteligentes que economizam tempo e dinheiro para o seu negócio crescer no piloto automático.</p>
-        <a href="#" class="sol-more">SAIBA MAIS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="sol-card reveal" style="transition-delay:.1s">
-        <div class="sol-icon">
-          <img src="img/thumb-ia.svg" alt="Inteligência Artificial" width="32" height="32">
-        </div>
-        <h3>Inteligência Artificial</h3>
-        <p>Integro chatbots com IA, automação de atendimento e soluções GPT que fazem seu negócio responder 24h por dia com qualidade.</p>
-        <a href="#" class="sol-more">SAIBA MAIS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="sol-card reveal" style="transition-delay:.2s">
-        <div class="sol-icon">
-          <img src="img/thumb-web.svg" alt="Web &amp; E-Commerce" width="32" height="32">
-        </div>
-        <h3>Web &amp; E-Commerce</h3>
-        <p>Desenvolvo lojas e plataformas de e-commerce de alta performance, otimizadas para conversão e com a melhor experiência de compra.</p>
-        <a href="#" class="sol-more">SAIBA MAIS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="sol-card reveal" style="transition-delay:.3s">
-        <div class="sol-icon">
-          <img src="img/thumb-ideia.svg" alt="Sites &amp; Plataformas" width="32" height="32">
-        </div>
-        <h3>Sites &amp; Plataformas</h3>
-        <p>Crio sites institucionais, landing pages e plataformas digitais com design moderno e foco total em resultados para sua empresa.</p>
-        <a href="#" class="sol-more">SAIBA MAIS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="sol-card reveal" style="transition-delay:.4s">
-        <div class="sol-icon">
-          <img src="img/tech-evm.svg" alt="Blockchain e Web3" width="32" height="32">
-        </div>
-        <h3>Blockchain &amp; Web3</h3>
-        <p>Desenvolvo smart contracts (ERC-20, ERC-721, ERC-1155), tokenização de ativos, NFTs e arquiteturas descentralizadas com segurança e inovação real.</p>
-        <a href="#" class="sol-more">SAIBA MAIS <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PILARES -->
-<section id="cases">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag">COMO ENTREGAMOS</div>
-      <h2>DEDICAÇÃO, EXPERTISE <span class="gold">E AGILIDADE</span></h2>
-      <p>Cada projeto é guiado por pilares que garantem qualidade, velocidade e resultados mensuráveis para o seu negócio crescer.</p>
-    </div>
-    <div class="cases-inner">
-      <div class="case-img-wrap reveal">
-        <img src="img/computador.webp" alt="Dashboard de alta performance" style="width:100%;aspect-ratio:16/10;object-fit:cover;display:block;border-radius:16px">
-        <div class="case-badge">Alta Performance em cada entrega</div>
-      </div>
-      <div class="case-stats reveal">
-        <div class="stat-box">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Dedicação exclusiva em cada projeto — do briefing ao lançamento</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">Sênior</span>
-          <span class="stat-label">Trajetória consolidada em desenvolvimento full stack, IA e automação</span>
-        </div>
-        <div class="stat-box">
-          <span class="stat-num">No Prazo</span>
-          <span class="stat-label">Prazos rigorosamente respeitados em cada fase — sem surpresas</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DIFFERENTIALS -->
-<section id="differentials">
-  <div class="container diff-inner">
-    <div class="diff-left reveal">
-      <div class="tag">POR QUE TRABALHAR COMIGO</div>
-      <h2>ATENDIMENTO DIRETO,<br>SEM <span class="gold">INTERMEDIÁRIOS</span></h2>
-      <p style="color:var(--muted);font-size:.95rem;line-height:1.7;margin-top:12px">Quando você me contrata, fala comigo — não com uma equipe terceirizada. Seu projeto recebe atenção total, do planejamento à entrega final.</p>
-      <ul class="diff-list">
-        <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Você fala diretamente comigo, sem equipes intermediárias</li>
-        <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Comprometimento total com seu projeto e seus resultados</li>
-        <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Entregas no prazo combinado, sem surpresas</li>
-        <li><div class="check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>Suporte pós-entrega incluído em todos os projetos</li>
-      </ul>
-      <a href="https://wa.me/5543999446606" class="btn-gold">SOLICITAR DIAGNÓSTICO GRATUITO</a>
-    </div>
-    <div class="diff-right reveal">
-      <div class="diff-stat">
-        <span class="diff-stat-num">40%</span>
-        <span class="diff-stat-label">Empresas com IA crescem mais rápido que os concorrentes</span>
-      </div>
-      <div class="diff-stat">
-        <span class="diff-stat-num">$13T</span>
-        <span class="diff-stat-label">Impacto projetado da IA na economia global até 2030</span>
-      </div>
-      <div class="diff-stat">
-        <span class="diff-stat-num">85%</span>
-        <span class="diff-stat-label">Das empresas líderes já investem em automação e IA</span>
-      </div>
-      <div class="diff-stat">
-        <span class="diff-stat-num">10X</span>
-        <span class="diff-stat-label">ROI médio com adoção de automação inteligente</span>
-      </div>
-    </div>
-    <p style="grid-column:1/-1;text-align:right;font-size:.72rem;color:var(--muted);margin-top:4px;opacity:.6">Fontes: McKinsey, PwC, Gartner</p>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container about-inner">
-    <div class="about-photo reveal">
-      <div class="about-photo-overlay"></div>
-      <img src="img/andre-profissional.jpg" alt="André Val — Desenvolvedor Full Stack" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0">
-      <div style="position:absolute;bottom:24px;left:24px">
-        <div class="tag" style="margin:0">André Val</div>
-        <p style="font-size:.82rem;color:var(--muted);margin-top:6px">Desenvolvedor Full Stack &amp; Especialista em IA</p>
-      </div>
-    </div>
-    <div class="about-content reveal">
-      <div class="tag">SOU EU MESMO QUE TRABALHO</div>
-      <h2>VOCÊ FALA <span class="gold">DIRETO COMIGO</span></h2>
-      <p>Sou André Val — desenvolvedor full stack com uma trajetória sólida e uma paixão genuína por tecnologia, inovação e resultados que transformam negócios de verdade.</p>
-      <p>Trabalho de forma independente e direta: quando você me contrata, é comigo mesmo que você planeja, constrói e lança. Atenção total, do primeiro contato até o pós-entrega — sem intermediários, sem ruídos.</p>
-      <p>Ao longo da minha jornada, ajudei dezenas de empresas a transformarem ideias em produtos digitais de alta performance — unindo desenvolvimento web moderno, inteligência artificial e automação de processos. Cada entrega vai além do código: entrego crescimento, eficiência e soluções que continuam gerando valor muito após o lançamento.</p>
-      <div class="social-row">
-        <a href="#" class="social-btn" aria-label="LinkedIn">
-          <img src="img/icon-linkedin.svg" alt="LinkedIn" width="26" height="26">
-        </a>
-        <a href="#" class="social-btn" aria-label="GitHub">
-          <img src="img/icon-github.svg" alt="GitHub" width="26" height="26">
-        </a>
-        <a href="#" class="social-btn" aria-label="Instagram">
-          <img src="img/icon-instagram.svg" alt="Instagram" width="26" height="26">
-        </a>
-      </div>
-      <a href="https://wa.me/5543999446606" class="btn-gold">FALAR COMIGO AGORA</a>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag">COMO FUNCIONA</div>
-      <h2>CADA PROJETO É <span class="gold">ÚNICO</span></h2>
-      <p>Um processo simples, transparente e focado em entregar exatamente o que seu negócio precisa para crescer.</p>
-    </div>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="step-num">01</div>
-        <h3>Me Conta Sua Necessidade</h3>
-        <p style="color:var(--muted);font-size:.9rem">Entre em contato e me conte sobre seu projeto, seus objetivos e os resultados que você quer alcançar com a tecnologia.</p>
-      </div>
-      <div class="process-step reveal" style="transition-delay:.15s">
-        <div class="step-num">02</div>
-        <h3>Analiso e Te Respondo</h3>
-        <p style="color:var(--muted);font-size:.9rem">Analiso sua demanda com atenção e te envio uma proposta personalizada com prazo, investimento e o plano de entrega completo.</p>
-      </div>
-      <div class="process-step reveal" style="transition-delay:.3s">
-        <div class="step-num">03</div>
-        <h3>Entregamos Juntos a Solução</h3>
-        <p style="color:var(--muted);font-size:.9rem">Trabalhamos em conjunto, com atualizações constantes, até a entrega final — e continuo disponível após o lançamento.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-  <div class="container pricing-inner">
-    <div class="pricing-left reveal">
-      <div class="tag">INVESTIMENTO JUSTO</div>
-      <h2>VOCÊ PAGA PELO QUE <span class="gold">REALMENTE PRECISA</span></h2>
-      <ul class="pricing-features">
-        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span style="color:var(--muted)">Sem pacotes fixos — cada solução é personalizada</span></li>
-        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span style="color:var(--muted)">Você paga pelo valor entregue, não por horas</span></li>
-        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span style="color:var(--muted)">Proposta clara e sem surpresas no investimento</span></li>
-        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span style="color:var(--muted)">Flexibilidade no parcelamento conforme o projeto</span></li>
-        <li><div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></div><span style="color:var(--muted)">Transparência total durante todo o processo</span></li>
-      </ul>
-    </div>
-    <div class="pricing-card reveal">
-      <h3>SOLICITE UM ORÇAMENTO AGORA</h3>
-      <p>Conta pra mim o que você precisa e eu te envio uma proposta personalizada em até 24 horas. Sem compromisso, sem enrolação.</p>
-      <a href="https://wa.me/5543999446606" class="btn-gold" style="display:block;text-align:center;font-size:1rem;padding:16px 24px">SOLICITAR ORÇAMENTO VIA WHATSAPP</a>
-      <p style="text-align:center;font-size:.8rem;color:var(--muted);margin-top:16px">Resposta em até 24h • Sem compromisso</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="tag">PERGUNTAS FREQUENTES</div>
-      <h2>DÚVIDAS <span class="gold">FREQUENTES (FAQ)</span></h2>
-      <p>Aqui estão as perguntas que mais recebo. Não encontrou o que procura? Me chame no WhatsApp.</p>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <button class="faq-q">
-          Como funciona o processo de desenvolvimento?
-          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">O processo começa com uma conversa para entender sua necessidade. Depois, envio uma proposta com prazo e valor. Após aprovação, iniciamos o desenvolvimento com atualizações frequentes até a entrega final.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          Quais são os valores e formas de pagamento?
-          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Os valores são personalizados de acordo com a complexidade e escopo do projeto. Aceito Pix, transferência bancária e cartão de crédito. O pagamento pode ser parcelado em etapas ao longo do projeto.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          Você faz sites com funcionalidades específicas?
-          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Sim! Trabalho com desenvolvimento personalizado, então posso criar qualquer funcionalidade que seu negócio precisar — desde sistemas de agendamento até plataformas complexas de e-commerce com automações.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          Dá para integrar com softwares que já utilizo?
-          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Com certeza! Integro com a maioria das ferramentas do mercado: CRMs, ERPs, gateways de pagamento, plataformas de marketing, sistemas de estoque e muito mais. Me conte o que você usa e verifico a viabilidade.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          Você tem suporte pós-lançamento?
-          <div class="faq-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></div>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Sim, todos os projetos incluem suporte pós-entrega. Fico disponível para ajustes, correções e melhorias. Para manutenção contínua, temos planos mensais personalizados de acordo com sua necessidade.</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="cta-final">
-  <div class="container" style="position:relative;z-index:1">
-    <div class="reveal">
-      <div class="tag">PRONTO PARA DAR O PRÓXIMO PASSO</div>
-      <h2>PRONTO PARA <em>ESCALAR</em><br>O SEU NEGÓCIO?</h2>
-      <p>Fale agora mesmo comigo e vamos juntos criar a solução perfeita para transformar seu negócio digital com tecnologia e resultados reais.</p>
-      <a href="https://wa.me/5543999446606" class="btn-gold" style="font-size:1.05rem;padding:18px 40px;display:inline-block">FALAR NO WHATSAPP AGORA</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="#" class="logo" style="margin-bottom:14px;display:inline-flex">
-          <img src="img/logo-webkeeper.svg" alt="WebKeeper — André Val Desenvolvedor" width="36" height="36">
-          WebKeeper
-        </a>
-        <p>Tecnologia sob medida para empresas que querem resultados reais. Desenvolvimento web, automação, inteligência artificial e blockchain.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Navegação</h4>
-        <ul>
-          <li><a href="#hero">Início</a></li>
-          <li><a href="#cases">Casos de Sucesso</a></li>
-          <li><a href="#solutions">Serviços</a></li>
-          <li><a href="#about">Sobre</a></li>
-          <li><a href="#faq">FAQ</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Serviços</h4>
-        <ul>
-          <li><a href="#">Automação com IA</a></li>
-          <li><a href="#">Inteligência Artificial</a></li>
-          <li><a href="#">Blockchain &amp; Web3</a></li>
-          <li><a href="#">Web &amp; E-Commerce</a></li>
-          <li><a href="#">Marketing Digital</a></li>
-          <li><a href="#">Sites &amp; Plataformas</a></li>
-          <li><a href="#">Consultoria em TI</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Fale Comigo</h4>
-        <ul>
-          <li><a href="https://wa.me/5543999446606">WhatsApp</a></li>
-          <li><a href="https://www.linkedin.com/in/andreval74" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="https://www.instagram.com/andreval74" target="_blank" rel="noopener">Instagram</a></li>
-          <li><a href="https://github.com/AndreVal74" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="mailto:andreval74@gmail.com">E-mail</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 WebKeeper — André Val. Todos os direitos reservados.</p>
-      <div class="footer-links">
-        <a href="#">Privacidade</a>
-        <a href="#">Termos de Uso</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- SCROLL TO TOP -->
-<button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">
-  <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.8" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
-</button>
-
-<!-- FLOATING WA BUTTON -->
-<a href="https://wa.me/5543999446606" class="wa-float" aria-label="WhatsApp">
-  <img src="img/icon-whatsapp.svg" alt="WhatsApp" width="28" height="28">
-</a>
-
-<script>
-// ── PARTICLES ──
-(function(){
-  const canvas = document.getElementById('particles-canvas');
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [], mouse = {x:-9999,y:-9999};
-
-  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-  resize();window.addEventListener('resize',resize);
-
-  window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY});
-
-  class Particle{
-    constructor(){this.reset(true)}
-    reset(init){
-      this.x=Math.random()*W;
-      this.y=init?Math.random()*H:H+10;
-      this.size=Math.random()*2.2+.4;
-      this.speedX=(Math.random()-.5)*.4;
-      this.speedY=-(Math.random()*.5+.2);
-      this.alpha=Math.random()*.6+.1;
-      this.gold=Math.random()>.55;
-    }
-    update(){
-      const dx=this.x-mouse.x,dy=this.y-mouse.y;
-      const dist=Math.sqrt(dx*dx+dy*dy);
-      if(dist<120){const f=((120-dist)/120)*.8;this.x+=dx/dist*f;this.y+=dy/dist*f}
-      this.x+=this.speedX;this.y+=this.speedY;
-      if(this.y<-10||this.x<-10||this.x>W+10)this.reset(false);
-    }
-    draw(){
-      ctx.beginPath();
-      ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
-      ctx.fillStyle=this.gold?`rgba(201,162,39,${this.alpha})`:`rgba(255,255,255,${this.alpha*.4})`;
-      ctx.fill();
-    }
-  }
-
-  for(let i=0;i<180;i++)particles.push(new Particle());
-
-  // Connection lines
-  function drawLines(){
-    for(let i=0;i<particles.length;i++){
-      for(let j=i+1;j<particles.length;j++){
-        const p=particles[i],q=particles[j];
-        const d=Math.hypot(p.x-q.x,p.y-q.y);
-        if(d<100){
-          ctx.beginPath();
-          ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);
-          const a=(1-d/100)*.12;
-          ctx.strokeStyle=`rgba(201,162,39,${a})`;
-          ctx.lineWidth=.6;ctx.stroke();
-        }
-      }
-    }
-  }
-
-  function animate(){
-    ctx.clearRect(0,0,W,H);
-    drawLines();
-    particles.forEach(p=>{p.update();p.draw()});
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
-
-// ── NAVBAR SCROLL ──
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  navbar.classList.toggle('scrolled',window.scrollY>60);
-});
-
-// ── SCROLL REVEAL ──
-const reveals=document.querySelectorAll('.reveal');
-const io=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}});
-},{threshold:.12});
-reveals.forEach(r=>io.observe(r));
-
-// ── FAQ ACCORDION ──
-document.querySelectorAll('.faq-q').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const item=btn.closest('.faq-item');
-    const wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!wasOpen)item.classList.add('open');
-  });
-});
-
-// ── COUNTER ANIMATION ──
-function animateCounter(el,target,suffix){
-  let current=0;
-  const inc=Math.ceil(target/60);
-  const iv=setInterval(()=>{
-    current=Math.min(current+inc,target);
-    el.textContent=(suffix==='%'?'+'+current+'%':current+'X');
-    if(current>=target)clearInterval(iv);
-  },25);
-}
-const counterObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting)return;
-    const el=e.target;
-    const t=el.dataset.target;
-    if(!t)return;
-    if(el.textContent.includes('%'))animateCounter(el,parseInt(t),'%');
-    else animateCounter(el,parseInt(t),'X');
-    counterObs.unobserve(el);
-  });
-},{threshold:.5});
-document.querySelectorAll('[data-target]').forEach(el=>counterObs.observe(el));
-
-// ── SMOOTH SCROLL ──
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');
-    if(id.length>1){e.preventDefault();document.querySelector(id)?.scrollIntoView({behavior:'smooth'})}
-  });
-});
-
-// ── SCROLL TOP BUTTON ──
-const scrollTopBtn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{
-  scrollTopBtn.classList.toggle('visible',window.scrollY>400);
-});
-scrollTopBtn.addEventListener('click',()=>{
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-</script>
-
-<!-- ── SCHEMA.ORG JSON-LD ── -->
-<script type="application/ld+json">
-[
+<x-dc>
+<helmet>
+  <title>WebKeeper | Fábrica de Ideias — IA, Automação, Web3, Sistemas e SEO</title>
+  <meta name="description" content="WebKeeper é uma fábrica de ideias e parceira de tecnologia: você traz o desafio, nós entramos com IA, automação, desenvolvimento, Web3 e SEO para tirar do papel e escalar. Transformamos ideias em sistemas inteligentes. Atendimento 100% pelo WhatsApp, 24/7.">
+  <meta name="keywords" content="criação de sites, desenvolvimento de sites, agência digital, inteligência artificial, IA para empresas, automação de processos, SEO, otimização para motores de busca, desenvolvimento de sistemas, marketing digital, WebKeeper, presença digital, sites que convertem, São Paulo">
+  <meta name="author" content="WebKeeper">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="language" content="pt-BR">
+  <meta http-equiv="content-language" content="pt-BR">
+  <meta name="theme-color" content="#05070d">
+  <meta name="rating" content="general">
+  <meta name="revisit-after" content="7 days">
+  <link rel="canonical" href="https://www.webkeeper.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="WebKeeper">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="WebKeeper | Fábrica de Ideias — IA, Automação, Web3 e Sistemas">
+  <meta property="og:description" content="Você traz a ideia, nós entramos como parceiros: IA, automação, desenvolvimento, Web3 e SEO que geram resultados reais. Atendimento 100% pelo WhatsApp, 24/7.">
+  <meta property="og:url" content="https://www.webkeeper.com.br/">
+  <meta property="og:image" content="https://www.webkeeper.com.br/images/wk-og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="WebKeeper — Transformamos ideias em sistemas inteligentes.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="WebKeeper | Sites, IA, Automação e SEO para Empresas">
+  <meta name="twitter:description" content="Transformamos ideias em sistemas inteligentes: sites, IA, automação e SEO que geram resultados reais. Atendimento 100% pelo WhatsApp, 24/7.">
+  <meta name="twitter:image" content="https://www.webkeeper.com.br/images/wk-og.png">
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "WebKeeper",
-    "founder": {
-      "@type": "Person",
-      "name": "André Luiz Campos Val",
-      "alternateName": "André Val",
-      "jobTitle": "Full Stack Web3 & Growth Specialist",
-      "email": "andreval74@gmail.com",
-      "telephone": "+55-43-99944-6606",
-      "sameAs": [
-        "https://github.com/AndreVal74",
-        "https://www.linkedin.com/in/andreval74",
-        "https://www.instagram.com/andreval74",
-        "https://wa.me/5543999446606"
-      ]
-    },
-    "url": "https://webkeeper.com.br",
-    "logo": "https://webkeeper.com.br/img/logo-webkeeper.svg",
-    "image": "https://webkeeper.com.br/img/computador.webp",
-    "telephone": "+55-43-99944-6606",
-    "email": "andreval74@gmail.com",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Londrina",
-      "addressRegion": "Paraná",
-      "addressCountry": "BR"
-    },
-    "areaServed": ["BR"],
-    "description": "WebKeeper — Tecnologia sob medida em Londrina-PR. Desenvolvimento Web, Automação com IA, Smart Contracts, Blockchain e Marketing Digital. Especialista: André Val.",
-    "priceRange": "$$",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Serviços Digitais WebKeeper",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Desenvolvimento de Sistemas e Aplicações Web Customizadas" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Automações Inteligentes e Chatbots com IA" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Blockchain, Smart Contracts (ERC-20, ERC-721, ERC-1155) e Web3" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Marketing Digital e Gestão de Tráfego Pago (Google Ads, Meta Ads, LinkedIn Ads)" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO e Inteligência de Dados" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Websites Profissionais e Landing Pages de Alta Conversão" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Consultoria em TI e Estratégia Digital" } }
-      ]
-    }
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "WebKeeper",
-    "url": "https://webkeeper.com.br",
-    "description": "WebKeeper — Tecnologia sob medida em Londrina-PR. Desenvolvimento Web, Automação com IA, Smart Contracts, Blockchain e Marketing Digital."
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "Como funciona o processo de desenvolvimento?",
-        "acceptedAnswer": { "@type": "Answer", "text": "O processo começa com uma conversa para entender sua necessidade. Depois, envio uma proposta com prazo e valor. Após aprovação, iniciamos o desenvolvimento com atualizações frequentes até a entrega final." }
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://www.webkeeper.com.br/#organization",
+        "name": "WebKeeper",
+        "url": "https://www.webkeeper.com.br/",
+        "logo": "https://www.webkeeper.com.br/images/wk-logo.png",
+        "image": "https://www.webkeeper.com.br/images/wk-logo.png",
+        "description": "Agência de tecnologia especialista em criação de sites, Inteligência Artificial, automação de processos, desenvolvimento de sistemas e SEO.",
+        "slogan": "Transformamos ideias em sistemas inteligentes.",
+        "areaServed": { "@type": "Country", "name": "Brasil" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Londrina", "addressRegion": "PR", "addressCountry": "BR" },
+        "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "telephone": "+55-43-99944-6606", "availableLanguage": ["Portuguese"] },
+        "openingHoursSpecification": { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "00:00", "closes": "23:59" },
+        "sameAs": [
+          "https://www.instagram.com/webkeeperia",
+          "https://www.linkedin.com/company/webkeeper",
+          "https://www.facebook.com/webkeeperia/"
+        ]
       },
       {
-        "@type": "Question",
-        "name": "Quais são os valores e formas de pagamento?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Os valores são personalizados de acordo com a complexidade e escopo do projeto. Aceito Pix, transferência bancária e cartão de crédito. O pagamento pode ser parcelado em etapas ao longo do projeto." }
+        "@type": "WebSite",
+        "@id": "https://www.webkeeper.com.br/#website",
+        "url": "https://www.webkeeper.com.br/",
+        "name": "WebKeeper",
+        "inLanguage": "pt-BR",
+        "publisher": { "@id": "https://www.webkeeper.com.br/#organization" }
       },
       {
-        "@type": "Question",
-        "name": "Você faz sites com funcionalidades específicas?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sim! Trabalho com desenvolvimento personalizado, então posso criar qualquer funcionalidade que seu negócio precisar — desde sistemas de agendamento até plataformas complexas de e-commerce com automações e integrações blockchain." }
-      },
-      {
-        "@type": "Question",
-        "name": "Dá para integrar com softwares que já utilizo?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Com certeza! Integro com a maioria das ferramentas do mercado: CRMs, ERPs, gateways de pagamento, plataformas de marketing, sistemas de estoque e muito mais. Me conte o que você usa e verifico a viabilidade." }
-      },
-      {
-        "@type": "Question",
-        "name": "Você tem suporte pós-lançamento?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sim, todos os projetos incluem suporte pós-entrega. Fico disponível para ajustes, correções e melhorias. Para manutenção contínua, temos planos mensais personalizados de acordo com sua necessidade." }
+        "@type": "Service",
+        "serviceType": "Criação de sites, IA, automação e SEO",
+        "provider": { "@id": "https://www.webkeeper.com.br/#organization" },
+        "areaServed": { "@type": "Country", "name": "Brasil" }
       }
     ]
   }
-]
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://unpkg.com/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <style id="__om-base">
+    @keyframes wk-pulse { 0%,100% { opacity:.5; } 50% { opacity:1; } }
+    @keyframes wk-twinkle { 0%,100% { opacity:.25; transform:scale(1); } 50% { opacity:.9; transform:scale(1.3); } }
+    @keyframes wk-ring-spin { to { transform:rotate(360deg); } }
+    @keyframes wk-ring-spin-reverse { to { transform:rotate(-360deg); } }
+    @keyframes wk-hero-float { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-12px); } }
+    @keyframes wk-loader-pop { 0% { opacity:0; transform:scale(.7); } 100% { opacity:1; transform:scale(1); } }
+    @keyframes wk-node-blink { 0%,100% { opacity:.2; } 50% { opacity:1; } }
+    @keyframes wk-core-glow { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+    @keyframes wk-core-breathe { 0%,100% { transform:translate(-50%,-50%) scale(1); } 50% { transform:translate(-50%,-50%) scale(1.06); } }
+    @keyframes wk-core-hue { to { filter:hue-rotate(360deg); } }
+    @keyframes wk-core-wobble { 0%,100% { transform:translate(-50%,-50%) rotate(0deg); } 50% { transform:translate(-50%,-50%) rotate(8deg); } }
+    @keyframes wk-blink { 0%,10%,90%,100% { transform:scaleY(1); } 5% { transform:scaleY(.14); } 95% { transform:scaleY(.14); } }
+    @keyframes wk-eye-glow { 0%,100% { opacity:.9; box-shadow:0 0 12px 3px rgba(180,220,255,.8); } 50% { opacity:1; box-shadow:0 0 20px 6px rgba(200,230,255,.95); } }
+    @keyframes wk-eye-look { 0%,100% { transform:translate(0,0); } 25% { transform:translate(10%,0); } 55% { transform:translate(-8%,4%); } 80% { transform:translate(0,-4%); } }
+    @keyframes wk-dash { to { stroke-dashoffset:-400; } }
+    @keyframes wk-draw { to { stroke-dashoffset:0; } }
+    @keyframes wk-glow-pulse {
+      0% { filter:drop-shadow(0 0 0 rgba(74,134,255,0)); }
+      50% { filter:drop-shadow(0 0 14px rgba(74,134,255,.9)) drop-shadow(0 0 26px rgba(127,216,255,.7)); }
+      100% { filter:drop-shadow(0 0 6px rgba(74,134,255,.6)); }
+    }
+    @keyframes wk-wave-out {
+      0% { box-shadow:0 0 0 0 rgba(59,123,255,.6); }
+      100% { box-shadow:0 0 0 3000px rgba(59,123,255,0); }
+    }
+    .wk-loader-glyph path { fill:none; stroke:#7fd8ff; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:140; stroke-dashoffset:140; animation:wk-draw 1.1s ease forwards, wk-glow-pulse 1s ease .9s forwards; }
+    html { scroll-behavior:smooth; scroll-padding-top:96px; }
+    body { margin:0; background:#000000; font-family:'Inter',sans-serif; cursor:none; }
+    ::selection { background:#2f6fed; color:#fff; }
+    a { color:#4a86ff; text-decoration:none; }
+    a:hover { color:#7aa6ff; }
+    ::-webkit-scrollbar { width:10px; }
+    ::-webkit-scrollbar-track { background:#000000; }
+    ::-webkit-scrollbar-thumb { background:#1c2338; border-radius:10px; }
+
+    /* ===== RESPONSIVO — tablet ===== */
+    @media (max-width:900px) {
+      header[data-screen-label="Nav"] { padding:14px 20px !important; gap:12px !important; }
+      header[data-screen-label="Nav"] nav { overflow-x:auto; flex-wrap:nowrap !important; justify-content:flex-start !important; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+      header[data-screen-label="Nav"] nav::-webkit-scrollbar { display:none; }
+      section { padding-left:22px !important; padding-right:22px !important; }
+      footer { padding-left:22px !important; padding-right:22px !important; }
+      div[style*="padding:40px 56px"] { padding:30px 22px !important; }
+      [data-r="hero"] { grid-template-columns:1fr !important; min-height:0 !important; padding-top:78px !important; gap:24px !important; }
+      [data-r="hero-visual"] { height:340px !important; }
+      [data-r="stats"] { grid-template-columns:1fr !important; gap:28px !important; }
+      [data-r="ia"] { grid-template-columns:1fr !important; gap:28px !important; }
+      [data-r="diag"] { grid-template-columns:1fr !important; gap:32px !important; }
+      [data-r="ia-chips"] { grid-template-columns:repeat(3,1fr) !important; }
+      [data-r="projects"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="footer"] { grid-template-columns:1fr 1fr !important; gap:30px !important; }
+      [data-r="process"] { grid-template-columns:repeat(2,1fr) !important; gap:30px 20px !important; }
+      [data-r="process-line"] { display:none !important; }
+      [data-r="pillar-body"] { padding-left:30px !important; }
+      [data-r="cta"] { padding:36px 28px !important; }
+      [data-r="tech"] { grid-template-columns:repeat(3,1fr) !important; }
+      [data-r="cases"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="testi"] { grid-template-columns:1fr !important; }
+      [data-r="why"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="sobre"] { grid-template-columns:1fr !important; gap:32px !important; }
+      [data-r="invest"] { grid-template-columns:1fr !important; }
+    }
+    /* ===== RESPONSIVO — celular ===== */
+    @media (max-width:600px) {
+      header[data-screen-label="Nav"] { padding:12px 16px !important; }
+      section { padding-left:16px !important; padding-right:16px !important; }
+      footer { padding-left:16px !important; padding-right:16px !important; }
+      div[style*="padding:40px 56px"] { padding:22px 16px !important; }
+      [data-r="hero-visual"] { height:260px !important; }
+      [data-r="stats-cards"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="pillar-body"] { grid-template-columns:1fr !important; padding-left:22px !important; padding-right:22px !important; }
+      [data-r="ia-chips"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="projects"] { grid-template-columns:1fr !important; }
+      [data-r="process"] { grid-template-columns:1fr !important; }
+      [data-r="footer"] { grid-template-columns:1fr !important; }
+      [data-r="cta"] { padding:30px 20px !important; text-align:center; }
+      [data-r="tech"] { grid-template-columns:repeat(2,1fr) !important; }
+      [data-r="why"] { grid-template-columns:1fr !important; }
+    }
+    /* Touch: restaura cursor nativo e some com o cursor customizado */
+    @media (hover:none) {
+      body { cursor:auto !important; }
+      [data-r="cursor"] { display:none !important; }
+    }
+  </style>
+</helmet>
+<div style="position:relative;background:#000000;min-height:100vh;overflow-x:clip;">
+
+  <!-- CUSTOM CURSOR -->
+  <div ref="{{ cursorRingRef }}" data-r="cursor" style="position:fixed;top:0;left:0;width:36px;height:36px;border-radius:50%;border:1px solid rgba(74,134,255,.6);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;"></div>
+  <div ref="{{ cursorDotRef }}" data-r="cursor" style="position:fixed;top:0;left:0;width:6px;height:6px;border-radius:50%;background:#4a86ff;box-shadow:0 0 12px 4px rgba(74,134,255,.8);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);"></div>
+
+  <!-- LOADER -->
+  <div ref="{{ loaderRef }}" style="position:fixed;inset:0;z-index:9998;background:#05070d;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;">
+    <div style="position:relative;width:132px;height:132px;display:flex;align-items:center;justify-content:center;">
+      <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,#4a86ff 70deg,transparent 150deg,#7fd8ff 210deg,transparent 280deg,#ff8a3d 330deg,transparent 360deg);-webkit-mask:radial-gradient(circle,transparent 60%,#000 63%,#000 80%,transparent 83%);mask:radial-gradient(circle,transparent 60%,#000 63%,#000 80%,transparent 83%);filter:blur(1px);animation:wk-ring-spin 1.5s linear infinite;"></div>
+      <div style="width:88px;height:88px;border-radius:50%;overflow:hidden;border:1px solid rgba(74,134,255,.5);box-shadow:0 0 28px rgba(74,134,255,.5);animation:wk-loader-pop .8s cubic-bezier(.2,.8,.2,1) both;">
+        <img src="./images/wk-logo.png" alt="WebKeeper" style="width:100%;height:100%;object-fit:contain;display:block;">
+      </div>
+    </div>
+    <div style="font-family:'Sora',sans-serif;font-weight:700;font-size:15px;letter-spacing:3px;color:#c4cae0;text-transform:uppercase;animation:wk-loader-pop 1s ease .25s both;">Web<span style="color:#4a86ff;">Keeper</span></div>
+    <div ref="{{ loaderWaveRef }}" style="position:absolute;top:42%;left:50%;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);"></div>
+  </div>
+
+  <!-- PARTICLE BACKGROUND -->
+  <canvas ref="{{ bgCanvasRef }}" style="position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
+
+  <div style="position:relative;z-index:1;">
+
+    <!-- NAV -->
+    <header ref="{{ headerRef }}" data-screen-label="Nav" style="position:sticky;top:0;z-index:500;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:16px 40px;background:rgba(6,9,17,0);backdrop-filter:blur(3px);border-bottom:1px solid rgba(74,134,255,0);transition:background .35s ease,box-shadow .35s ease,border-color .35s ease;">
+      <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+        <div style="width:36px;height:36px;border-radius:50%;overflow:hidden;border:1px solid rgba(74,134,255,.55);box-shadow:0 0 16px rgba(74,134,255,.4);flex-shrink:0;">
+          <img src="./images/wk-logo.png" alt="WebKeeper" style="width:100%;height:100%;object-fit:contain;display:block;">
+        </div>
+        <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:18px;color:#f2f4fa;letter-spacing:.2px;white-space:nowrap;">WebKeeper</span>
+      </div>
+      <nav style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:center;flex:1;">
+        <sc-for list="{{ navLinks }}" as="link" hint-placeholder-count="8">
+          <a href="{{ link.href }}" style="font-size:13.5px;font-weight:500;color:#c4cae0;white-space:nowrap;" style-hover="color:#4a86ff;">{{ link.label }}</a>
+        </sc-for>
+      </nav>
+      <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:9px;background:#2f6fed;color:#fff;font-weight:600;font-size:13.5px;box-shadow:0 8px 24px -8px rgba(47,111,237,.6);white-space:nowrap;flex-shrink:0;" style-hover="background:#4a80ff;transform:translateY(-1px);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h6l4 4v13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path><path d="M14 3v4h4"></path><path d="M9.5 12.5h5M9.5 16h3"></path></svg>
+        Solicitar Orçamento</a>
+    </header>
+
+    <!-- HERO -->
+    <section data-screen-label="Hero" data-r="hero" style="position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:92px 56px 0;max-width:1560px;margin:0 auto;min-height:72vh;">
+      <div data-animate="fade-up" style="position:relative;z-index:2;">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:2px;color:#4a86ff;text-transform:uppercase;margin-bottom:22px;">Fábrica de ideias · Parceira em tecnologia</div>
+        <h1 style="font-family:'Sora',sans-serif;font-size:clamp(38px,4vw,54px);line-height:1.12;font-weight:700;color:#f2f4fa;margin:0 0 22px;letter-spacing:-1px;">
+          Transformamos Ideias em <span style="background:linear-gradient(100deg,#4a86ff,#7fd8ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:#4a86ff;">Sistemas Inteligentes.</span>
+        </h1>
+        <p style="font-size:16.5px;line-height:1.65;color:#8b93ab;max-width:500px;margin:0 0 34px;">
+          Você traz a ideia; nós entramos como parceiros. Analisamos o desafio e desenvolvemos a solução completa com Inteligência Artificial, automação, Web3, sistemas sob medida e SEO para tirar do papel e escalar.
+        </p>
+        <div style="display:flex;gap:16px;margin-bottom:44px;flex-wrap:wrap;">
+          <a href="{{ waOrcamento }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:10px;background:#2f6fed;color:#fff;font-weight:600;font-size:14.5px;box-shadow:0 12px 28px -10px rgba(47,111,237,.7);" style-hover="background:#4a80ff;transform:translateY(-2px);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3h6l4 4v13a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"></path><path d="M14 3v4h4"></path><path d="M9.5 12.5h5M9.5 16h3"></path></svg>
+            Solicitar Orçamento</a>
+          <a href="{{ waSolucoes }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:10px;border:1px solid rgba(255,255,255,.18);color:#e7eaff;font-weight:600;font-size:14.5px;" style-hover="border-color:rgba(74,134,255,.6);background:rgba(74,134,255,.08);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4a86ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="2.6"></circle></svg>
+            Conhecer Soluções</a>
+        </div>
+        <div style="display:flex;gap:32px;flex-wrap:wrap;">
+          <sc-for list="{{ trustItems }}" as="t" hint-placeholder-count="4">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <div style="width:34px;height:34px;flex-shrink:0;border-radius:50%;background:{{ t.colorBg }};border:1px solid {{ t.colorSoft }};box-shadow:0 0 16px -6px {{ t.colorShadow }};display:flex;align-items:center;justify-content:center;">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="{{ t.color }}" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.icon }}"></path></svg>
+              </div>
+              <span style="font-size:12.5px;color:#c4cae0;font-weight:600;">{{ t.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div data-animate="fade-up" data-r="hero-visual" style="position:relative;height:520px;display:flex;align-items:center;justify-content:center;">
+        <div style="position:absolute;width:480px;height:360px;border-radius:24px;background:radial-gradient(ellipse at center,rgba(47,111,237,.30),transparent 68%);filter:blur(16px);"></div>
+        <div style="position:absolute;right:12%;top:16%;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,rgba(255,138,61,.22),transparent 70%);filter:blur(10px);"></div>
+
+        <div style="position:relative;z-index:2;width:100%;max-width:440px;aspect-ratio:1 / 1;animation:wk-hero-float 6s ease-in-out infinite;">
+          <!-- AI CORE :: orb (parallax follows mouse) -->
+          <div ref="{{ orbRef }}" style="position:absolute;inset:0;">
+          <!-- ambient bloom -->
+          <div style="position:absolute;left:50%;top:50%;width:96%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(80,150,255,.35),rgba(20,40,90,.12) 55%,transparent 72%);filter:blur(28px);z-index:1;animation:wk-core-glow 4.5s ease-in-out infinite;"></div>
+
+          <!-- single circulating energy ring around the ball -->
+          <div style="position:absolute;left:50%;top:50%;width:104%;transform:translate(-50%,-50%);aspect-ratio:1;pointer-events:none;z-index:5;">
+            <div style="position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,transparent 0deg,rgba(74,134,255,.9) 55deg,transparent 130deg,rgba(127,216,255,.75) 190deg,transparent 250deg,rgba(255,138,61,.7) 310deg,transparent 360deg);-webkit-mask:radial-gradient(circle,transparent 56%,#000 59%,#000 67%,transparent 70%);mask:radial-gradient(circle,transparent 56%,#000 59%,#000 67%,transparent 70%);filter:blur(2px);mix-blend-mode:screen;opacity:.9;animation:wk-ring-spin 7s linear infinite;"></div>
+          </div>
+
+          <!-- glossy dark sphere body -->
+          <div style="position:absolute;left:50%;top:50%;width:60%;aspect-ratio:1;transform:translate(-50%,-50%);z-index:3;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(60,90,150,.55),rgba(10,16,30,.9) 60%,#05070d 100%);box-shadow:inset 0 0 40px rgba(120,170,255,.35),inset 6px 8px 30px rgba(0,0,0,.6),0 0 60px rgba(74,134,255,.25);animation:wk-core-breathe 5s ease-in-out infinite;"></div>
+          <!-- top gloss highlight -->
+          <div style="position:absolute;left:50%;top:38%;width:26%;height:14%;transform:translate(-50%,-50%);z-index:4;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.5),transparent 70%);filter:blur(3px);"></div>
+
+          <!-- friendly curious eyes (follow the mouse + blink) -->
+          <div ref="{{ eyesRef }}" style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:6;display:flex;gap:18%;width:30%;justify-content:center;align-items:center;transition:transform .18s ease-out;">
+            <span style="display:block;width:22%;padding-bottom:30%;background:radial-gradient(circle at 40% 35%,#ffffff,#dcecff 70%);border-radius:50%/45%;animation:wk-blink 5.5s ease-in-out infinite,wk-eye-glow 3.2s ease-in-out infinite;"></span>
+            <span style="display:block;width:22%;padding-bottom:30%;background:radial-gradient(circle at 40% 35%,#ffffff,#dcecff 70%);border-radius:50%/45%;animation:wk-blink 5.5s ease-in-out infinite,wk-eye-glow 3.2s ease-in-out infinite .1s;"></span>
+          </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- STATS -->
+    <section id="cenario" data-screen-label="Stats" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" data-r="stats" style="display:grid;grid-template-columns:.8fr 1.6fr;gap:44px;align-items:start;">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#ff8a3d;text-transform:uppercase;margin-bottom:14px;">O Cenário Digital</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(24px,2.4vw,32px);color:#f2f4fa;font-weight:700;margin:0 0 16px;letter-spacing:-.5px;">Quem não se moderniza, <span style="color:#ff8a3d;">fica invisível.</span></h2>
+          <p style="color:#8b93ab;font-size:14.5px;line-height:1.6;margin:0 0 24px;">Seus concorrentes já estão na onda da IA, das redes sociais e dos sites que convertem. Cada dia sem presença digital forte é cliente que vai para outro. Os números do mercado não mentem — e não esperam.</p>
+          <a href="{{ waEspecialista }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:9px;border:1px solid rgba(74,134,255,.4);color:#c9d5ff;font-weight:600;font-size:13.5px;" style-hover="background:rgba(74,134,255,.1);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a86ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13v-1a8 8 0 0 1 16 0v1"></path><path d="M4 14a2 2 0 0 1 2-2h1v5H6a2 2 0 0 1-2-2z"></path><path d="M20 14a2 2 0 0 0-2-2h-1v5h1a2 2 0 0 0 2-2z"></path><path d="M18 17v1a3 3 0 0 1-3 3h-2"></path></svg>
+            Falar com Especialista</a>
+          <div style="font-size:11px;color:#5b6280;margin-top:14px;line-height:1.5;">Fontes: Sebrae/ABDI, MDIC, PwC, Serasa Experian e Opinion Box (2024–26).</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px;">
+          <div data-r="stats-cards" style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;">
+            <sc-for list="{{ statsTop }}" as="s" hint-placeholder-count="4">
+              <div data-glow="" style="display:flex;flex-direction:column;background:linear-gradient(160deg,rgba(40,66,120,.22),rgba(16,26,48,.4));border:1px solid {{ s.soft }};border-radius:16px;padding:20px 18px;transition:transform .3s ease,border-color .3s ease;" style-hover="transform:translateY(-4px);border-color:{{ s.color }};">
+                <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
+                  <div style="width:44px;height:44px;flex-shrink:0;border-radius:12px;background:{{ s.bg }};border:1px solid {{ s.soft }};box-shadow:0 0 18px -6px {{ s.shadow }};display:flex;align-items:center;justify-content:center;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ s.color }}" stroke-width="1.9"><path d="{{ s.icon }}"></path></svg>
+                  </div>
+                  <div data-count="{{ s.value }}" data-prefix="{{ s.prefix }}" data-suffix="{{ s.suffix }}" style="font-family:'Sora',sans-serif;font-size:26px;font-weight:800;color:{{ s.color }};line-height:1;">{{ s.prefix }}0{{ s.suffix }}</div>
+                </div>
+                <div style="font-size:12px;color:#8b93ab;font-weight:500;line-height:1.45;">{{ s.label }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="background:linear-gradient(160deg,rgba(40,66,120,.22),rgba(16,26,48,.42));border:1px solid rgba(255,138,61,.18);border-radius:16px;padding:26px 30px 24px;">
+            <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:24px;">
+              <div>
+                <div style="font-size:11px;font-weight:700;letter-spacing:1.2px;color:#ff8a3d;text-transform:uppercase;margin-bottom:8px;">Linha do tempo · vendas online das PMEs no Brasil</div>
+                <div style="font-family:'Sora',sans-serif;font-size:20px;font-weight:700;color:#f2f4fa;line-height:1.25;">De R$5 bi para R$67 bi em 5 anos <span style="color:#ff8a3d;">(+1.200%)</span></div>
+              </div>
+              <a href="{{ waEspecialista }}" target="_blank" rel="noopener" style="flex-shrink:0;display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:9px;background:linear-gradient(135deg,#ff8a3d,#ff5470);color:#0b0f1a;font-weight:700;font-size:13px;font-family:'Sora',sans-serif;box-shadow:0 8px 22px -8px rgba(255,138,61,.6);transition:transform .2s ease;" style-hover="transform:translateY(-1px);">Quero fazer parte disso →</a>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:14px;height:150px;">
+              <sc-for list="{{ timelineData }}" as="t" hint-placeholder-count="6">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;">
+                  <div style="font-family:'Sora',sans-serif;font-size:13px;font-weight:800;color:#f2f4fa;margin-bottom:6px;height:16px;">{{ t.val }}</div>
+                  <div style="width:100%;max-width:54px;border-radius:7px 7px 3px 3px;background:{{ t.barBg }};height:{{ t.h }};box-shadow:0 0 16px -4px {{ t.glow }};"></div>
+                  <div style="font-size:11px;color:#8b93ab;font-weight:600;margin-top:9px;">{{ t.year }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="font-size:10.5px;color:#5b6280;margin-top:16px;line-height:1.5;">Faturamento online das micro e pequenas empresas — marcos oficiais: R$5 bi (2019) e R$67 bi (2024). Fonte: MDIC/Receita Federal. Quem entrou cedo no digital saiu na frente. E a sua empresa?</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- SERVICES -->
+    <section id="servicos" data-screen-label="Services" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;margin-bottom:36px;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Nossos Serviços</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(28px,2.8vw,38px);color:#f2f4fa;font-weight:700;margin:0;max-width:600px;letter-spacing:-.5px;">Soluções <span style="color:#4a86ff;">completas</span> para elevar o seu negócio</h2>
+        </div>
+        <p style="color:#8b93ab;font-size:15px;max-width:380px;line-height:1.6;margin:0;">Tecnologia, criatividade e estratégia para criar sistemas inteligentes que geram resultados reais.</p>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <sc-for list="{{ pillars }}" as="p" hint-placeholder-count="4">
+          <div data-animate="fade-up" data-glow="" style="background:linear-gradient(160deg,rgba(30,48,86,.28),rgba(10,16,32,.5));backdrop-filter:blur(12px);border:1px solid {{ p.border }};border-radius:18px;overflow:hidden;transition:border-color .35s ease,box-shadow .35s ease;">
+            <div onClick="{{ p.toggle }}" style="display:flex;align-items:center;gap:22px;padding:26px 30px;cursor:pointer;">
+              <div style="font-family:'Sora',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;color:{{ p.color }};opacity:.55;width:26px;flex-shrink:0;">{{ p.num }}</div>
+              <div style="width:56px;height:56px;flex-shrink:0;border-radius:15px;background:{{ p.colorBg }};border:1px solid {{ p.colorSoft }};box-shadow:0 0 22px -8px {{ p.colorShadow }};display:flex;align-items:center;justify-content:center;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="{{ p.color }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ p.icon }}"></path></svg>
+              </div>
+              <div style="flex:1;min-width:0;">
+                <h3 style="font-family:'Sora',sans-serif;font-size:19px;font-weight:600;color:#f2f4fa;margin:0 0 4px;letter-spacing:-.3px;">{{ p.title }}</h3>
+                <p style="font-size:13.5px;color:#8b93ab;margin:0;line-height:1.5;">{{ p.intro }}</p>
+              </div>
+              <div style="font-size:30px;line-height:1;color:{{ p.color }};font-weight:200;flex-shrink:0;transition:transform .35s ease;transform:{{ p.chev }};">+</div>
+            </div>
+            <div style="overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;max-height:{{ p.bodyMaxH }};opacity:{{ p.bodyOpacity }};">
+              <div data-r="pillar-body" style="padding:2px 30px 28px 104px;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;">
+                <sc-for list="{{ p.items }}" as="it" hint-placeholder-count="4">
+                  <div style="display:flex;gap:13px;align-items:flex-start;padding:15px 17px;border-radius:13px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);">
+                    <div style="width:8px;height:8px;border-radius:50%;margin-top:6px;flex-shrink:0;background:{{ p.color }};box-shadow:0 0 9px {{ p.color }};"></div>
+                    <div>
+                      <div style="font-size:14px;font-weight:600;color:#eef1f8;margin-bottom:3px;">{{ it.title }}</div>
+                      <div style="font-size:12.5px;color:#8b93ab;line-height:1.5;">{{ it.desc }}</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- IA BAND -->
+    <section id="ia" data-screen-label="AI Band" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" data-r="ia" style="display:grid;grid-template-columns:.85fr 1.4fr;gap:44px;align-items:start;position:relative;">
+        <div style="position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(74,134,255,.16),transparent 70%);"></div>
+        <div style="position:relative;z-index:2;">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Inteligência Artificial</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(24px,2.4vw,30px);color:#f2f4fa;font-weight:700;margin:0 0 16px;letter-spacing:-.5px;">IA aplicada para transformar seu negócio.</h2>
+          <p style="color:#8b93ab;font-size:14.5px;line-height:1.6;margin:0 0 24px;">Utilizamos o poder da Inteligência Artificial para automatizar processos, gerar insights e criar experiências inteligentes.</p>
+          <a href="{{ waIA }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:9px;border:1px solid rgba(74,134,255,.5);color:#c9d5ff;font-weight:600;font-size:13.5px;" style-hover="background:rgba(74,134,255,.1);">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a86ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"></path><path d="M18.5 15.5l.6 1.6 1.6.6-1.6.6-.6 1.6-.6-1.6-1.6-.6 1.6-.6z"></path></svg>
+            Explorar Soluções de IA</a>
+        </div>
+        <div data-r="ia-chips" style="position:relative;z-index:2;display:grid;grid-template-columns:repeat(5,1fr);gap:14px;">
+          <sc-for list="{{ aiChips }}" as="c" hint-placeholder-count="5">
+            <div data-glow="" style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:22px 12px;text-align:center;transition:transform .3s ease,border-color .3s ease;" style-hover="border-color:{{ c.soft }};background:rgba(74,134,255,.06);transform:translateY(-4px);">
+              <div style="width:68px;height:68px;margin:0 auto 14px;border-radius:50%;background:{{ c.bg }};border:1.5px solid {{ c.soft }};box-shadow:0 0 24px -6px {{ c.shadow }}, inset 0 0 16px -9px {{ c.shadow }};display:flex;align-items:center;justify-content:center;">
+                {{ c.iconEl }}
+              </div>
+              <div style="font-size:11.5px;color:#c4cae0;font-weight:600;line-height:1.4;">{{ c.label }}</div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- PROCESS -->
+    <section id="processo" data-screen-label="Process" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" style="position:relative;">
+        <div style="margin-bottom:48px;">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Nosso Processo</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(26px,2.6vw,34px);color:#f2f4fa;font-weight:700;margin:0;letter-spacing:-.5px;">Um processo claro para <span style="color:#4a86ff;">resultados extraordinários.</span></h2>
+        </div>
+        <div data-r="process" style="position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:24px;">
+          <div data-r="process-line" style="position:absolute;top:23px;left:23px;right:23px;height:2px;background:rgba(255,255,255,.08);">
+            <div ref="{{ timelineLineRef }}" style="height:100%;width:0%;background:linear-gradient(90deg,#2f6fed,#ff8a3d);box-shadow:0 0 12px rgba(74,134,255,.6);"></div>
+          </div>
+          <sc-for list="{{ processSteps }}" as="step" hint-placeholder-count="5">
+            <div data-animate="fade-up" style="position:relative;">
+              <div style="width:46px;height:46px;border-radius:50%;background:#0b111f;border:2px solid #2f6fed;box-shadow:0 0 18px -4px rgba(74,134,255,.7);display:flex;align-items:center;justify-content:center;font-family:'Sora',sans-serif;font-weight:700;color:#4a86ff;margin-bottom:20px;position:relative;z-index:2;">{{ step.n }}</div>
+              <h3 style="font-family:'Sora',sans-serif;font-size:15.5px;color:#f2f4fa;font-weight:600;margin:0 0 8px;">{{ step.title }}</h3>
+              <p style="font-size:13px;color:#8b93ab;line-height:1.55;margin:0;">{{ step.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- SOBRE + POR QUE -->
+    <section id="sobre" data-screen-label="Sobre" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" data-r="sobre" style="display:grid;grid-template-columns:.9fr 1.3fr;gap:48px;align-items:start;">
+        <div data-glow="" style="aspect-ratio:1/1;border-radius:20px;overflow:hidden;border:1px solid rgba(74,134,255,.18);box-shadow:0 24px 60px -30px rgba(74,134,255,.5);transition:transform .35s ease,box-shadow .35s ease;" style-hover="transform:translateY(-4px);box-shadow:0 30px 70px -28px rgba(74,134,255,.7);">
+          <img src="./images/wk-core.png" alt="Núcleo tecnológico WebKeeper" style="width:100%;height:100%;object-fit:cover;display:block;">
+        </div>
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Sobre a WebKeeper</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(24px,2.6vw,34px);color:#f2f4fa;font-weight:700;margin:0 0 22px;letter-spacing:-.5px;line-height:1.15;">Uma fábrica de ideias, <span style="color:#4a86ff;">parceira do seu projeto.</span></h2>
+          <sc-for list="{{ aboutParas }}" as="p" hint-placeholder-count="3">
+            <p style="font-size:14.5px;color:#9aa2ba;line-height:1.7;margin:0 0 16px;">{{ p }}</p>
+          </sc-for>
+          <a href="{{ waAbout }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:10px;padding:13px 24px;border-radius:9px;background:#2f6fed;color:#fff;font-weight:600;font-size:14px;box-shadow:0 12px 28px -10px rgba(47,111,237,.7);" style-hover="background:#4a80ff;transform:translateY(-2px);">Trazer minha ideia</a>
+        </div>
+      </div>
+
+      <div data-animate="fade-up" style="margin-top:44px;">
+        <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:6px;">Por que a WebKeeper</div>
+        <h3 style="font-family:'Sora',sans-serif;font-size:clamp(20px,2.2vw,28px);color:#f2f4fa;font-weight:700;margin:0 0 24px;letter-spacing:-.4px;">Mais que um fornecedor. Um <span style="color:#4a86ff;">parceiro de verdade.</span></h3>
+        <div data-r="why" style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;">
+          <sc-for list="{{ whyCards }}" as="w" hint-placeholder-count="4">
+            <div data-glow="" style="padding:26px 24px;border-radius:16px;background:linear-gradient(160deg,rgba(30,48,86,.28),rgba(10,16,32,.5));border:1px solid {{ w.colorSoft }};transition:transform .3s ease,border-color .3s ease;" style-hover="transform:translateY(-4px);border-color:{{ w.color }};">
+              <div style="width:52px;height:52px;border-radius:14px;background:{{ w.colorBg }};border:1px solid {{ w.colorSoft }};box-shadow:0 0 20px -8px {{ w.colorShadow }};display:flex;align-items:center;justify-content:center;margin-bottom:18px;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="{{ w.color }}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ w.icon }}"></path></svg>
+              </div>
+              <h4 style="font-family:'Sora',sans-serif;font-size:16px;font-weight:600;color:#f2f4fa;margin:0 0 8px;">{{ w.title }}</h4>
+              <p style="font-size:13px;color:#8b93ab;line-height:1.55;margin:0;">{{ w.desc }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- PROJECTS -->
+    <section id="projetos" data-screen-label="Projects" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px;flex-wrap:wrap;gap:20px;">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Projetos</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(26px,2.6vw,34px);color:#f2f4fa;font-weight:700;margin:0;letter-spacing:-.5px;">Soluções que geram resultados reais.</h2>
+        </div>
+        <a href="{{ waProjetos }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:9px;border:1px solid rgba(255,255,255,.16);color:#e7eaff;font-weight:600;font-size:13.5px;" style-hover="border-color:#4a86ff;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4a86ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"></path></svg>
+          Ver todos os projetos</a>
+      </div>
+      <div data-r="projects" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+        <sc-for list="{{ projects }}" as="p" hint-placeholder-count="4">
+          <div data-animate="fade-up" data-glow="" style="border-radius:16px;overflow:hidden;background:linear-gradient(160deg,rgba(30,48,86,.30),rgba(10,16,32,.5));backdrop-filter:blur(12px);border:1px solid rgba(74,134,255,.12);" style-hover="border-color:rgba(74,134,255,.55);box-shadow:0 20px 40px -22px rgba(74,134,255,.4);">
+            <div style="height:170px;position:relative;overflow:hidden;background:#0a1020;">
+              <sc-if value="{{ p.image }}" hint-placeholder-val="{{ false }}">
+                <img src="{{ p.image }}" alt="{{ p.title }}" style="width:100%;height:100%;object-fit:cover;transition:transform .5s ease;display:block;" style-hover="transform:scale(1.06);">
+              </sc-if>
+              <div style="position:absolute;top:14px;left:14px;padding:5px 11px;border-radius:100px;background:rgba(6,9,17,.65);border:1px solid rgba(74,134,255,.3);color:#f2f4fa;font-size:11px;font-weight:600;">{{ p.tag }}</div>
+            </div>
+            <div style="padding:20px;">
+              <h3 style="font-family:'Sora',sans-serif;font-size:15px;color:#f2f4fa;font-weight:600;margin:0 0 8px;">{{ p.title }}</h3>
+              <p style="font-size:12.5px;color:#8b93ab;line-height:1.5;margin:0;">{{ p.desc }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- DIAGNÓSTICO -->
+    <section id="diagnostico" data-screen-label="Diagnóstico" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up">
+        <div style="margin-bottom:38px;">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#ff8a3d;text-transform:uppercase;margin-bottom:14px;">Diagnóstico Digital · Grátis</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(28px,2.8vw,38px);color:#f2f4fa;font-weight:700;margin:0;max-width:720px;letter-spacing:-.5px;line-height:1.15;">O seu site está <span style="color:#ff8a3d;">deixando dinheiro na mesa.</span></h2>
+        </div>
+        <div data-r="diag" style="display:grid;grid-template-columns:1fr 1.05fr;gap:48px;align-items:start;">
+          <div>
+            <p style="color:#9aa2ba;font-size:15px;line-height:1.65;margin:0 0 30px;max-width:440px;">Faça agora o raio-x da sua presença digital. Em segundos você vê exatamente onde está perdendo clientes — e o que nós corrigimos para você vender mais.</p>
+            <div style="display:flex;flex-direction:column;gap:15px;">
+              <sc-for list="{{ scanChecklist }}" as="c" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:13px;">
+                  <div style="width:32px;height:32px;border-radius:9px;flex-shrink:0;background:rgba(255,138,61,.12);border:1px solid rgba(255,138,61,.3);display:flex;align-items:center;justify-content:center;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff8a3d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ c.icon }}"></path></svg></div>
+                  <div style="font-size:14px;font-weight:600;color:#eef1f8;">{{ c.title }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div>
+            <div style="background:linear-gradient(160deg,rgba(40,66,120,.22),rgba(16,26,48,.42));border:1px solid rgba(255,138,61,.22);border-radius:16px;padding:26px 30px 28px;">
+              <div style="display:flex;align-items:center;gap:11px;margin-bottom:5px;">
+                <div style="width:9px;height:9px;border-radius:50%;background:#ff8a3d;box-shadow:0 0 11px #ff8a3d;"></div>
+                <div style="font-family:'Sora',sans-serif;font-size:16px;font-weight:700;color:#f2f4fa;letter-spacing:-.2px;">Analise agora, é grátis</div>
+              </div>
+              <p style="font-size:12.5px;color:#8b93ab;margin:0 0 18px;line-height:1.5;">Digite seu site ou o nome da sua empresa e receba seu resultado na hora.</p>
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+                <input ref="{{ analyzerRef }}" onKeyDown="{{ onScanKey }}" placeholder="seusite.com.br ou nome da empresa" spellcheck="false" style="flex:1;min-width:200px;background:rgba(8,13,26,.6);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:13px 15px;color:#eef1f8;font-size:14px;font-family:inherit;outline:none;transition:border-color .25s ease;" style-focus="border-color:#ff8a3d;">
+                <button onClick="{{ runScan }}" style="border:none;cursor:pointer;background:linear-gradient(135deg,#ff8a3d,#ff5470);color:#0b0f1a;font-weight:700;font-size:13.5px;font-family:'Sora',sans-serif;padding:0 24px;border-radius:10px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 24px -8px rgba(255,138,61,.6);transition:transform .2s ease,box-shadow .2s ease;" style-hover="transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(255,138,61,.8);">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0b0f1a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                  Analisar
+                </button>
+              </div>
+
+              <sc-if value="{{ scanning }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:22px;display:flex;align-items:center;gap:14px;">
+                  <div style="width:26px;height:26px;border-radius:50%;border:2.5px solid rgba(255,138,61,.25);border-top-color:#ff8a3d;animation:wk-ring-spin .8s linear infinite;flex-shrink:0;"></div>
+                  <div>
+                    <div style="font-size:13.5px;color:#eef1f8;font-weight:600;">Analisando presença digital…</div>
+                    <div style="font-size:11.5px;color:#8b93ab;margin-top:2px;">Verificando SEO, velocidade, mobile, conversão e IA.</div>
+                  </div>
+                </div>
+              </sc-if>
+
+              <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
+                <div style="margin-top:22px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);">
+                  <div style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-bottom:20px;">
+                    <div style="display:flex;align-items:baseline;gap:4px;">
+                      <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:44px;line-height:1;color:#ff5470;">{{ scanOverall }}</div>
+                      <div style="font-family:'Sora',sans-serif;font-weight:800;font-size:20px;color:#ff5470;">/100</div>
+                    </div>
+                    <div style="flex:1;min-width:200px;">
+                      <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,84,112,.14);border:1px solid rgba(255,84,112,.35);border-radius:20px;padding:4px 12px;font-size:11.5px;font-weight:700;color:#ff8a9c;margin-bottom:8px;">Desempenho: {{ scanGrade }}</div>
+                      <div style="font-size:12.5px;color:#8b93ab;line-height:1.5;">{{ scanMsg }}</div>
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:11px;margin-bottom:22px;">
+                    <sc-for list="{{ scanMetrics }}" as="m" hint-placeholder-count="5">
+                      <div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;">
+                          <span style="font-size:12.5px;color:#c3cade;">{{ m.label }}</span>
+                          <span style="font-size:12.5px;font-weight:700;font-family:'Sora',sans-serif;color:{{ m.color }};">{{ m.score }}%</span>
+                        </div>
+                        <div style="height:7px;border-radius:6px;background:rgba(255,255,255,.07);overflow:hidden;">
+                          <div style="height:100%;border-radius:6px;width:{{ m.width }};background:{{ m.color }};box-shadow:0 0 10px {{ m.color }};transition:width 1s cubic-bezier(.4,0,.2,1);"></div>
+                        </div>
+                      </div>
+                    </sc-for>
+                  </div>
+                  <a href="{{ waFix }}" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;box-sizing:border-box;padding:15px;border-radius:11px;background:linear-gradient(135deg,#4a86ff,#2f6fed);color:#fff;font-weight:700;font-size:14px;font-family:'Sora',sans-serif;box-shadow:0 10px 28px -8px rgba(74,134,255,.7);transition:transform .2s ease,box-shadow .2s ease;" style-hover="transform:translateY(-1px);box-shadow:0 14px 34px -8px rgba(74,134,255,.9);">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"></path><path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"></path></svg>
+                    Quero melhorar meu site com a WebKeeper
+                  </a>
+                  <div style="font-size:10.5px;color:#5b6280;text-align:center;margin-top:11px;line-height:1.5;">Estimativa gerada a partir de indicadores públicos de presença digital. Uma análise completa e personalizada é feita por nossos especialistas.</div>
+                </div>
+              </sc-if>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- INVESTIMENTO -->
+    <section id="investimento" data-screen-label="Investimento" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" data-r="invest" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch;">
+        <div>
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Investimento sob medida</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(24px,2.4vw,32px);color:#f2f4fa;font-weight:700;margin:0 0 24px;letter-spacing:-.5px;line-height:1.15;">Você paga pelo que <span style="color:#4a86ff;">realmente precisa.</span></h2>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <sc-for list="{{ pricingPoints }}" as="p" hint-placeholder-count="4">
+              <div style="display:flex;gap:13px;align-items:flex-start;">
+                <div style="width:24px;height:24px;border-radius:7px;flex-shrink:0;background:rgba(74,134,255,.12);border:1px solid rgba(74,134,255,.3);display:flex;align-items:center;justify-content:center;margin-top:1px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4a86ff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg></div>
+                <div>
+                  <div style="font-size:14.5px;font-weight:600;color:#eef1f8;">{{ p.title }}</div>
+                  <div style="font-size:12.5px;color:#8b93ab;line-height:1.5;">{{ p.desc }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div data-glow="" style="display:flex;flex-direction:column;justify-content:center;padding:36px 34px;border-radius:20px;background:linear-gradient(160deg,rgba(40,66,120,.3),rgba(16,26,48,.5));border:1px solid rgba(74,134,255,.22);transition:transform .3s ease,border-color .3s ease;" style-hover="transform:translateY(-4px);border-color:rgba(74,134,255,.55);">
+          <div style="font-family:'Sora',sans-serif;font-size:22px;font-weight:700;color:#f2f4fa;margin-bottom:10px;letter-spacing:-.3px;">Solicite uma proposta</div>
+          <p style="font-size:13.5px;color:#9aa2ba;line-height:1.6;margin:0 0 22px;">Conte o seu desafio e enviamos uma proposta personalizada em até 24 horas. Sem compromisso, sem enrolação.</p>
+          <a href="{{ waProposta }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:15px;border-radius:11px;background:linear-gradient(135deg,#4a86ff,#2f6fed);color:#fff;font-weight:700;font-size:14px;font-family:'Sora',sans-serif;box-shadow:0 12px 30px -10px rgba(74,134,255,.7);" style-hover="transform:translateY(-2px);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.9 4.5 3.9.6.3 1.1.4 1.5.6.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"></path></svg>
+            Solicitar proposta via WhatsApp</a>
+          <div style="font-size:11.5px;color:#5b6280;text-align:center;margin-top:12px;">Resposta em até 24h · Atendimento 24/7</div>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- FAQ -->
+    <section id="faq" data-screen-label="FAQ" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up">
+        <div style="margin-bottom:36px;max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
+          <div style="font-size:12.5px;font-weight:700;letter-spacing:1.6px;color:#4a86ff;text-transform:uppercase;margin-bottom:14px;">Dúvidas frequentes</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(26px,2.6vw,34px);color:#f2f4fa;font-weight:700;margin:0;letter-spacing:-.5px;">Perguntas que mais recebemos.</h2>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;">
+          <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+            <div style="background:linear-gradient(160deg,rgba(30,48,86,.22),rgba(10,16,32,.44));border:1px solid {{ f.border }};border-radius:14px;overflow:hidden;transition:border-color .35s ease;">
+              <div onClick="{{ f.toggle }}" style="display:flex;align-items:center;gap:18px;padding:20px 24px;cursor:pointer;">
+                <h3 style="flex:1;font-family:'Sora',sans-serif;font-size:15.5px;font-weight:600;color:#f2f4fa;margin:0;">{{ f.q }}</h3>
+                <div style="font-size:26px;line-height:1;color:#4a86ff;font-weight:200;flex-shrink:0;transition:transform .35s ease;transform:{{ f.chev }};">+</div>
+              </div>
+              <div style="overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;max-height:{{ f.bodyMaxH }};opacity:{{ f.bodyOpacity }};">
+                <p style="padding:0 24px 22px;margin:0;font-size:13.5px;color:#8b93ab;line-height:1.65;">{{ f.a }}</p>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- CTA -->
+    <section id="contato" data-screen-label="CTA" style="padding:0 56px 0;max-width:1560px;margin:0 auto;scroll-margin-top:96px;">
+      <div data-animate="fade-up" data-r="cta" style="position:relative;border-radius:24px;overflow:hidden;padding:52px 52px;background:linear-gradient(100deg,#2f6fed,#ff8a3d 140%);display:flex;justify-content:space-between;align-items:center;gap:36px;flex-wrap:wrap;">
+        <div style="position:relative;z-index:2;max-width:600px;">
+          <div style="font-size:12px;font-weight:700;letter-spacing:1.6px;color:rgba(255,255,255,.8);text-transform:uppercase;margin-bottom:12px;">Chegou a sua hora.</div>
+          <h2 style="font-family:'Sora',sans-serif;font-size:clamp(22px,2.4vw,30px);color:#fff;font-weight:800;margin:0;letter-spacing:-.5px;">Vamos construir o próximo sistema da sua empresa.</h2>
+        </div>
+        <div style="position:relative;z-index:2;text-align:right;">
+          <a href="{{ waDiagnostico }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:15px 26px;border-radius:10px;background:#000000;color:#f2f4fa;font-weight:700;font-size:14px;white-space:nowrap;" style-hover="transform:translateY(-2px);box-shadow:0 16px 30px -8px rgba(0,0,0,.5);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"></path><path d="M8 5H6a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2"></path><path d="M9 13l2 2 4-4"></path></svg>
+            Solicitar Diagnóstico Gratuito</a>
+        </div>
+      </div>
+    </section>
+
+    <div style="max-width:1560px;margin:0 auto;padding:40px 56px;"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(212,175,55,.30),transparent);"></div></div>
+
+    <!-- FOOTER -->
+    <footer data-screen-label="Footer" style="padding:0 56px 28px;">
+      <div data-r="footer" style="max-width:1560px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:40px;">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
+            <div style="width:32px;height:32px;border-radius:50%;overflow:hidden;border:1px solid rgba(74,134,255,.5);box-shadow:0 0 14px rgba(74,134,255,.35);flex-shrink:0;">
+              <img src="./images/wk-logo.png" alt="WebKeeper" style="width:100%;height:100%;object-fit:contain;display:block;">
+            </div>
+            <span style="font-family:'Sora',sans-serif;font-weight:700;font-size:16px;color:#f2f4fa;">WebKeeper</span>
+          </div>
+          <p style="font-size:13px;color:#7d859f;line-height:1.6;max-width:280px;margin:0 0 18px;">Transformamos ideias em sistemas inteligentes. Tecnologia, inovação e resultado para o seu negócio.</p>
+          <div style="display:flex;gap:10px;">
+            <sc-for list="{{ socials }}" as="s" hint-placeholder-count="4">
+              <a href="{{ s.url }}" target="_blank" rel="noopener" aria-label="{{ s.label }}" style="width:36px;height:36px;border-radius:9px;background:#0b111f;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;" style-hover="border-color:#4a86ff;background:rgba(74,134,255,.1);">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="#c4cae0"><path d="{{ s.icon }}"></path></svg>
+              </a>
+            </sc-for>
+          </div>
+        </div>
+        <sc-for list="{{ footerCols }}" as="col" hint-placeholder-count="3">
+          <div>
+            <div style="font-size:13px;font-weight:700;color:#f2f4fa;margin-bottom:16px;">{{ col.title }}</div>
+            <sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+              <div style="margin-bottom:10px;"><a href="{{ l.href }}" style="font-size:12.5px;color:#7d859f;" style-hover="color:#c4cae0;">{{ l.label }}</a></div>
+            </sc-for>
+          </div>
+        </sc-for>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:#f2f4fa;margin-bottom:16px;">Atendimento</div>
+          <p style="font-size:12.5px;color:#7d859f;margin:0 0 14px;line-height:1.6;">Atendimento 100% pelo WhatsApp, disponível 24 horas por dia, 7 dias por semana. Fale com a gente e comece agora.</p>
+          <a href="{{ waFloat }}" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:9px;padding:12px 18px;border-radius:9px;background:#25D366;color:#052e16;font-weight:700;font-size:13px;font-family:'Sora',sans-serif;" style-hover="transform:translateY(-2px);box-shadow:0 12px 26px -10px rgba(37,211,102,.7);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#052e16"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.9 4.5 3.9.6.3 1.1.4 1.5.6.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"></path></svg>
+            Falar no WhatsApp</a>
+        </div>
+      </div>
+      <div style="max-width:1560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:12px;">
+        <span style="font-size:12px;color:#5b6280;">© 2026 WebKeeper. Todos os direitos reservados.</span>
+        <div style="display:flex;gap:16px;">
+          <a href="./Política de Privacidade.dc.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Política de Privacidade</a>
+          <a href="./Termos de Uso.dc.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Termos de Uso</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- WHATSAPP FLOAT -->
+  <a href="{{ waFloat }}" target="_blank" rel="noopener" style="position:fixed;bottom:28px;right:28px;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;z-index:600;box-shadow:0 10px 26px -8px rgba(37,211,102,.7);" style-hover="transform:scale(1.08);">
+    <svg width="27" height="27" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.9 4.5 3.9.6.3 1.1.4 1.5.6.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z"></path></svg>
+  </a>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.bgCanvasRef = React.createRef();
+    this.cursorDotRef = React.createRef();
+    this.cursorRingRef = React.createRef();
+    this.eyesRef = React.createRef();
+    this.orbRef = React.createRef();
+    this.loaderRef = React.createRef();
+    this.loaderShapeRef = React.createRef();
+    this.loaderTextRef = React.createRef();
+    this.loaderWaveRef = React.createRef();
+    this.timelineLineRef = React.createRef();
+    this.progressRingRef = React.createRef();
+    this.headerRef = React.createRef();
+    this.analyzerRef = React.createRef();
+    this.state = { activeFilter: null, openPillar: -1, openFaq: -1, scanning: false, scanResult: null, barsIn: false };
+
+    const blue = { color: '#4a86ff', colorBg: 'rgba(74,134,255,.12)', colorSoft: 'rgba(74,134,255,.4)', colorShadow: 'rgba(74,134,255,.3)' };
+    const orange = { color: '#ff8a3d', colorBg: 'rgba(255,138,61,.12)', colorSoft: 'rgba(255,138,61,.4)', colorShadow: 'rgba(255,138,61,.3)' };
+    const cyan = { color: '#4fd3ff', colorBg: 'rgba(79,211,255,.12)', colorSoft: 'rgba(79,211,255,.4)', colorShadow: 'rgba(79,211,255,.3)' };
+    const purple = { color: '#a97bff', colorBg: 'rgba(169,123,255,.12)', colorSoft: 'rgba(169,123,255,.4)', colorShadow: 'rgba(169,123,255,.3)' };
+    const green = { color: '#3ddc97', colorBg: 'rgba(61,220,151,.12)', colorSoft: 'rgba(61,220,151,.4)', colorShadow: 'rgba(61,220,151,.3)' };
+    const pink = { color: '#ff6fae', colorBg: 'rgba(255,111,174,.12)', colorSoft: 'rgba(255,111,174,.4)', colorShadow: 'rgba(255,111,174,.3)' };
+    // AI chip palette (color/bg/soft/shadow keys) for renderVals scope
+    const chip = (c) => ({ color: c.color, bg: c.colorBg, soft: c.colorSoft, shadow: c.colorShadow });
+    this.aiPalette = { cyan: chip(cyan), orange: chip(orange), blue: chip(blue), green: chip(green), purple: chip(purple) };
+    this.pal = { blue, orange, cyan, purple, green, pink };
+
+    // Ordered as a natural journey: IA → automação/integrações → dev/web → plataformas → marketing.
+    this.servicesData = [
+      { title: 'Inteligência Artificial', desc: 'Soluções com IA, machine learning e agentes inteligentes para o seu negócio.', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z', ...blue },
+      { title: 'Chatbots', desc: 'Chatbots inteligentes para atendimento, vendas e suporte ao cliente 24/7.', icon: 'M20 4H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3v3l4-3h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zM8 10h.01M12 10h.01M16 10h.01', ...blue },
+      { title: 'Automação', desc: 'Automatize tarefas, reduza custos e aumente a produtividade com fluxos inteligentes.', icon: 'M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8', ...cyan },
+      { title: 'Integrações', desc: 'Integramos sistemas, APIs e ferramentas para otimizar toda a sua operação.', icon: 'M10 3.5a1.5 1.5 0 0 1 3 0V5h2.5a1 1 0 0 1 1 1v2.5H18a1.5 1.5 0 0 1 0 3h-1.5V14a1 1 0 0 1-1 1H13v1.5a1.5 1.5 0 0 1-3 0V15H7.5a1 1 0 0 1-1-1v-2.5H5a1.5 1.5 0 0 1 0-3h1.5V6a1 1 0 0 1 1-1H10z', ...pink },
+      { title: 'APIs', desc: 'Desenvolvimento e integração de APIs robustas e seguras para sua aplicação.', icon: 'M8 4l-5 8 5 8M16 4l5 8-5 8', ...green },
+      { title: 'Landing Pages', desc: 'Páginas de alta conversão focadas em performance e resultados reais.', icon: 'M4 4h16v16H4zM4 9h16M9 13l2 2 4-4', ...green },
+      { title: 'Aplicativos Web', desc: 'Sistemas e aplicações web sob medida para os processos da sua empresa.', icon: 'M4 4h16v16H4zM4 9h16M7 6.5h.01M9.5 6.5h.01', ...green },
+      { title: 'WordPress', desc: 'Sites e sistemas profissionais com WordPress, o CMS mais utilizado do mundo.', icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM6.5 8l2.4 8 2.1-5.5M11.5 10.5 13.6 16 16 8', ...purple },
+      { title: 'Elementor', desc: 'Sites modernos, rápidos e escaláveis construídos com Elementor Pro.', icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9 8v8M13 8v8M17 8v8', ...purple },
+      { title: 'SaaS', desc: 'Plataformas SaaS escaláveis, seguras e altamente performáticas.', icon: 'M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.5 3.5 0 0 1 18 18z', ...purple },
+      { title: 'SEO', desc: 'Estratégias avançadas para posicionar seu site no topo do Google.', icon: 'M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM20 20l-4.35-4.35', ...orange }
+    ];
+
+    this.pillarsData = [
+      { num: '01', title: 'IA & Automação', intro: 'Inteligência aplicada e processos automatizados que trabalham por você.', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z', ...blue, items: [
+        { title: 'Inteligência Artificial', desc: 'IA, machine learning e agentes inteligentes sob medida.' },
+        { title: 'Chatbots', desc: 'Atendimento, vendas e suporte automatizados 24/7.' },
+        { title: 'Automação de Processos', desc: 'Fluxos que reduzem custos e elevam a produtividade.' },
+        { title: 'Integrações & APIs', desc: 'Conectamos sistemas e ferramentas em uma só operação.' }
+      ] },
+      { num: '02', title: 'Desenvolvimento & Sistemas', intro: 'Aplicações web, mobile e plataformas robustas, feitas para escalar.', icon: 'M8 4l-5 8 5 8M16 4l5 8-5 8', ...green, items: [
+        { title: 'Aplicativos Web', desc: 'Sistemas sob medida para os processos da sua empresa.' },
+        { title: 'Aplicativos Mobile', desc: 'Apps nativos e híbridos (iOS e Android) sob medida.' },
+        { title: 'Plataformas SaaS', desc: 'Produtos escaláveis, seguros e performáticos.' },
+        { title: 'APIs Robustas', desc: 'Desenvolvimento e integração de APIs seguras.' }
+      ] },
+      { num: '03', title: 'Web3 & Blockchain', intro: 'Smart contracts, tokenização e arquiteturas descentralizadas com segurança real.', icon: 'M12 2 3 7v10l9 5 9-5V7zM12 2v20M3 7l9 5 9-5', ...cyan, items: [
+        { title: 'Smart Contracts', desc: 'ERC-20, ERC-721 e ERC-1155 auditáveis e seguros.' },
+        { title: 'Tokenização de Ativos', desc: 'Ativos do mundo real transformados em tokens digitais.' },
+        { title: 'NFTs & Colecionáveis', desc: 'Coleções, utilidades e experiências on-chain.' },
+        { title: 'Arquiteturas Descentralizadas', desc: 'dApps e integrações Web3 sob medida.' }
+      ] },
+      { num: '04', title: 'Sites & Presença Digital', intro: 'Sites profissionais e páginas rápidas que convertem visitantes.', icon: 'M4 4h16v16H4zM4 9h16M9 13l2 2 4-4', ...purple, items: [
+        { title: 'Landing Pages', desc: 'Páginas de alta conversão focadas em resultado.' },
+        { title: 'WordPress', desc: 'Sites e sistemas com o CMS mais usado do mundo.' },
+        { title: 'Elementor', desc: 'Sites modernos e escaláveis com Elementor Pro.' }
+      ] },
+      { num: '05', title: 'Marketing & Performance', intro: 'Estratégias de tráfego e SEO que posicionam sua marca e atraem clientes.', icon: 'M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM20 20l-4.35-4.35', ...orange, items: [
+        { title: 'SEO Avançado', desc: 'Posicionamos seu site no topo do Google.' },
+        { title: 'Tráfego Pago', desc: 'Campanhas no Google e Meta Ads com foco em ROI.' },
+        { title: 'Performance', desc: 'Velocidade e Core Web Vitals otimizados.' },
+        { title: 'Análise & Dados', desc: 'Decisões guiadas por métricas reais de conversão.' }
+      ] },
+      { num: '06', title: 'Design & Conteúdo', intro: 'Materiais e peças visuais que comunicam autoridade e geram engajamento.', icon: 'M12 19l7-7 3 3-7 7-3-3zM18 13l-1.5-7.5L2 2l3.5 14.5L13 18zM2 2l7.586 7.586M11 13a2 2 0 1 0 0-4 2 2 0 0 0 0 4z', ...pink, items: [
+        { title: 'Materiais Ricos', desc: 'E-books, PDFs e whitepapers para captação de leads.' },
+        { title: 'Infográficos', desc: 'Dados complexos traduzidos em peças visuais claras.' },
+        { title: 'Identidade & Peças', desc: 'Apresentações, social media e comunicação visual.' }
+      ] }
+    ];
+
+    this.projectsData = [
+      { tag: 'Sistema Web', title: 'Plataforma de Gestão Empresarial', desc: 'Sistema completo para gestão de processos e equipes.', image: './images/solucao-gestao.png' },
+      { tag: 'SaaS', title: 'Plataforma SaaS Educacional', desc: 'Plataforma completa para cursos online e membros.', image: './images/solucao-saas.png' },
+      { tag: 'Integração', title: 'Integração WhatsApp + CRM', desc: 'Automação de atendimento e gestão de relacionamento.', image: './images/solucao-whatsapp.png' },
+      { tag: 'Landing Page', title: 'Landing Page de Alta Conversão', desc: 'Página otimizada para gerar leads e vendas.', image: './images/solucao-landing.png' }
+    ];
+
+    this.whyCards = [
+      { title: 'Parceria de verdade', desc: 'Entramos como sócios da sua ideia — não como fornecedor distante.', icon: 'M16 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zM8 13a3.5 3.5 0 1 0-3.5-3.5A3.5 3.5 0 0 0 8 13zM2 20a6 6 0 0 1 12 0M14 20a6 6 0 0 1 8-5.2', ...blue },
+      { title: 'Tecnologia de ponta', desc: 'IA, automação, Web3 e desenvolvimento aplicados ao seu desafio.', icon: 'M13 2 3 14h7l-1 8 10-12h-7z', ...cyan },
+      { title: 'Entrega ágil', desc: 'Prazos respeitados em cada fase, do briefing ao lançamento.', icon: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 7v5l3 3', ...orange },
+      { title: 'Evolução contínua', desc: 'Suporte e melhoria constante do sistema após a entrega.', icon: 'M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5', ...green }
+    ];
+
+    this.aboutParas = [
+      'A WebKeeper nasceu para ser uma fábrica de ideias: um lugar onde pessoas e empresas que têm um desafio — mas não têm a estrutura técnica — encontram um parceiro para tirar o projeto do papel.',
+      'Você traz a ideia; nós entramos com tecnologia, método e execução. Analisamos o desafio, desenhamos a solução e caminhamos junto como parceiros em cada área em que atuamos: IA, automação, desenvolvimento, Web3 e presença digital.',
+      'Mais do que entregar código, entregamos crescimento, eficiência e soluções que continuam gerando valor muito depois do lançamento.'
+    ];
+
+    this.pricingPoints = [
+      { title: 'Sem pacotes fixos', desc: 'Cada solução é desenhada sob medida para o seu desafio.' },
+      { title: 'Você paga pelo valor', desc: 'Investimento no resultado entregue, não em horas.' },
+      { title: 'Proposta transparente', desc: 'Escopo, prazo e investimento claros, sem surpresas.' },
+      { title: 'Flexibilidade total', desc: 'Parcelamento e etapas conforme o seu projeto.' }
+    ];
+
+    this.faqData = [
+      { q: 'Como funciona o processo de desenvolvimento?', a: 'Começa com uma conversa para entender sua necessidade. Enviamos uma proposta com escopo, prazo e investimento. Após a aprovação, desenvolvemos com atualizações frequentes até a entrega final.' },
+      { q: 'Quais tecnologias vocês utilizam?', a: 'Trabalhamos com React/Next.js, Node.js, Python, bancos SQL, IA/LLMs e Solidity/EVM para Web3 — sempre escolhendo a stack ideal para cada projeto.' },
+      { q: 'Vocês criam funcionalidades específicas?', a: 'Sim. O desenvolvimento é personalizado: de sistemas de agendamento a plataformas complexas de e-commerce com automações sob medida.' },
+      { q: 'Dá para integrar com softwares que já uso?', a: 'Com certeza. Integramos com CRMs, ERPs, gateways de pagamento, plataformas de marketing e sistemas de estoque. Conte o que você usa e verificamos a viabilidade.' },
+      { q: 'Existe suporte após o lançamento?', a: 'Sim. Todos os projetos incluem suporte pós-entrega, com ajustes e melhorias. Para manutenção contínua, temos planos mensais personalizados.' },
+      { q: 'Como falo com a WebKeeper?', a: 'Todo o atendimento é pelo WhatsApp, 24/7. Basta clicar em qualquer botão de WhatsApp no site e começar a conversa.' }
+    ];
+  }
+
+  componentDidMount() {
+    this.initCursor();
+    this.initParticles();
+    this.initLoader();
+    this.initScrollAnimations();
+    this.initHeader();
+    this.initEyes();
+    window.addEventListener('resize', this.handleResize = () => this.resizeAll());
+  }
+
+  toggleFilter(key) {
+    this.setState(s => ({ activeFilter: s.activeFilter === key ? null : key }));
+  }
+
+  initEyes() {
+    const eyes = this.eyesRef.current;
+    if (!eyes) return;
+    let etx = 0, ety = 0, ecx = 0, ecy = 0, raf;
+    const onMove = (e) => {
+      const r = eyes.getBoundingClientRect();
+      const ex = r.left + r.width / 2, ey = r.top + r.height / 2;
+      const dx = e.clientX - ex, dy = e.clientY - ey;
+      const dist = Math.hypot(dx, dy) || 1;
+      etx = (dx / dist) * Math.min(13, dist / 12);
+      ety = (dy / dist) * Math.min(13, dist / 12);
+    };
+    const tick = () => {
+      ecx += (etx - ecx) * 0.12; ecy += (ety - ecy) * 0.12;
+      eyes.style.transform = `translate(calc(-50% + ${ecx.toFixed(2)}px), calc(-50% + ${ecy.toFixed(2)}px))`;
+      raf = requestAnimationFrame(tick);
+    };
+    window.addEventListener('mousemove', onMove);
+    this.eyesMove = onMove; this.eyesRaf = () => cancelAnimationFrame(raf);
+    tick();
+  }
+
+  initHeader() {
+    const h = this.headerRef.current;
+    if (!h) return;
+    const onScroll = () => {
+      if (window.scrollY > 24) {
+        // Stays transparent — just a light frosted blur + hairline so it floats over the content.
+        h.style.background = 'rgba(10,15,26,.28)';
+        h.style.backdropFilter = 'blur(14px) saturate(140%)';
+        h.style.webkitBackdropFilter = 'blur(14px) saturate(140%)';
+        h.style.borderBottom = '1px solid rgba(74,134,255,.12)';
+        h.style.boxShadow = '0 8px 30px -22px rgba(0,0,0,.7)';
+      } else {
+        h.style.background = 'rgba(10,15,26,0)';
+        h.style.backdropFilter = 'blur(2px)';
+        h.style.webkitBackdropFilter = 'blur(2px)';
+        h.style.borderBottom = '1px solid rgba(74,134,255,0)';
+        h.style.boxShadow = 'none';
+      }
+    };
+    this._headerScroll = onScroll;
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  componentWillUnmount() {
+    cancelAnimationFrame(this._particleRAF);
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  resizeAll() {
+    if (this.bgCanvasRef.current) {
+      this.bgCanvasRef.current.width = window.innerWidth;
+      this.bgCanvasRef.current.height = window.innerHeight;
+    }
+  }
+
+  initCursor() {
+    const dot = this.cursorDotRef.current, ring = this.cursorRingRef.current;
+    if (!dot || !ring) return;
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2, rx = mx, ry = my;
+    window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; dot.style.transform = `translate(${mx}px, ${my}px) translate(-50%,-50%)`; });
+    const loop = () => { rx += (mx - rx) * .15; ry += (my - ry) * .15; ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`; requestAnimationFrame(loop); };
+    loop();
+    document.querySelectorAll('a, button, [data-glow]').forEach(el => {
+      const inline = getComputedStyle(el).display.startsWith('inline') && !el.hasAttribute('data-glow');
+      el.addEventListener('mouseenter', () => {
+        ring.style.width = '54px'; ring.style.height = '54px'; ring.style.borderColor = 'rgba(255,138,61,.8)';
+        if (inline) {
+          el.dataset._ts = el.style.textShadow || '';
+          el.style.transition = (el.style.transition || '') + ',text-shadow .25s ease,color .25s ease';
+          el.style.textShadow = '0 0 14px rgba(255,138,61,.85), 0 0 26px rgba(255,138,61,.5)';
+        } else {
+          el.dataset._bs = el.style.boxShadow || '';
+          const glow = '0 0 22px 2px rgba(255,138,61,.55), 0 8px 30px -6px rgba(255,138,61,.5)';
+          el.style.boxShadow = el.dataset._bs ? el.dataset._bs + ', ' + glow : glow;
+          el.style.transition = (el.style.transition || '') + ',box-shadow .25s ease';
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        ring.style.width = '36px'; ring.style.height = '36px'; ring.style.borderColor = 'rgba(74,134,255,.6)';
+        if (inline) el.style.textShadow = el.dataset._ts || '';
+        else el.style.boxShadow = el.dataset._bs || '';
+      });
+    });
+  }
+
+  initParticles() {
+    const canvas = this.bgCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth; canvas.height = window.innerHeight;
+    const COUNT = 90;
+    const pts = Array.from({ length: COUNT }, () => ({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      vx: (Math.random() - .5) * .3, vy: (Math.random() - .5) * .3,
+      orange: Math.random() < .25
+    }));
+    let mouse = { x: -9999, y: -9999 };
+    window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pts.forEach(p => {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+        const dx = mouse.x - p.x, dy = mouse.y - p.y, d = Math.sqrt(dx * dx + dy * dy);
+        if (d < 160) { p.x -= dx / d * .6; p.y -= dy / d * .6; }
+      });
+      for (let i = 0; i < COUNT; i++) {
+        for (let j = i + 1; j < COUNT; j++) {
+          const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y, d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 130) {
+            ctx.strokeStyle = `rgba(74,134,255,${.14 * (1 - d / 130)})`;
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(pts[i].x, pts[i].y); ctx.lineTo(pts[j].x, pts[j].y); ctx.stroke();
+          }
+        }
+        const dxm = mouse.x - pts[i].x, dym = mouse.y - pts[i].y, dm = Math.sqrt(dxm * dxm + dym * dym);
+        ctx.fillStyle = pts[i].orange ? 'rgba(255,138,61,.8)' : (dm < 160 ? 'rgba(255,138,61,.9)' : 'rgba(74,134,255,.55)');
+        ctx.beginPath(); ctx.arc(pts[i].x, pts[i].y, dm < 160 ? 2.2 : 1.5, 0, Math.PI * 2); ctx.fill();
+      }
+      this._particleRAF = requestAnimationFrame(draw);
+    };
+    draw();
+  }
+
+  hideLoader() {
+    const overlay = this.loaderRef.current;
+    if (!overlay) return;
+    overlay.style.transition = 'opacity .5s ease';
+    overlay.style.opacity = '0';
+    overlay.style.pointerEvents = 'none';
+    setTimeout(() => {
+      if (overlay) overlay.style.display = 'none';
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    }, 600);
+  }
+
+  initLoader() {
+    // Pure-CSS draw loader: fire the wave ripple, then fade the overlay out.
+    setTimeout(() => {
+      const wave = this.loaderWaveRef.current;
+      if (wave) wave.style.animation = 'wk-wave-out 1.1s ease-out forwards';
+      setTimeout(() => this.hideLoader(), 400);
+    }, 1700);
+  }
+
+  initScrollAnimations() {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    document.querySelectorAll('[data-animate="fade-up"]').forEach(el => {
+      window.gsap.fromTo(el, { opacity: 0, y: 30 }, {
+        opacity: 1, y: 0, duration: .8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+    // Safety net: if ScrollTriggers didn't attach (some preview/scroll containers
+    // don't drive them), the fromTo tweens stay frozen in the from-state and the
+    // page reads blank. Detect that and force everything visible — kill the frozen
+    // tween first so its immediateRender from-state can't win.
+    this._revealFallback = setTimeout(() => {
+      if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+      const triggers = window.ScrollTrigger ? window.ScrollTrigger.getAll().length : 0;
+      document.querySelectorAll('[data-animate="fade-up"]').forEach(el => {
+        const hidden = parseFloat(getComputedStyle(el).opacity) < 0.05;
+        if (triggers === 0 || hidden) {
+          window.gsap.killTweensOf(el);
+          window.gsap.set(el, { opacity: 1, y: 0, clearProps: 'transform' });
+        }
+      });
+    }, 1800);
+    if (this.timelineLineRef.current) {
+      window.gsap.to(this.timelineLineRef.current, {
+        width: '100%', duration: 1.4, ease: 'power2.out',
+        scrollTrigger: { trigger: this.timelineLineRef.current, start: 'top 80%' }
+      });
+    }
+    if (this.progressRingRef.current) {
+      window.ScrollTrigger.create({
+        trigger: this.progressRingRef.current, start: 'top 90%', once: true,
+        onEnter: () => window.gsap.to(this.progressRingRef.current, { strokeDashoffset: 326 * (1 - .5), duration: 1.6, ease: 'power2.out' })
+      });
+    }
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseFloat(el.getAttribute('data-count'));
+      const suffix = el.getAttribute('data-suffix') || '';
+      const prefix = el.getAttribute('data-prefix') || '';
+      const obj = { v: 0 };
+      window.ScrollTrigger.create({
+        trigger: el, start: 'top 90%', once: true,
+        onEnter: () => window.gsap.to(obj, {
+          v: target, duration: 1.6, ease: 'power2.out',
+          onUpdate: () => { el.textContent = prefix + Math.round(obj.v).toLocaleString('pt-BR') + suffix; }
+        })
+      });
+    });
+  }
+
+  runScan() {
+    const raw = (this.analyzerRef.current && this.analyzerRef.current.value || '').trim();
+    if (!raw) { if (this.analyzerRef.current) this.analyzerRef.current.focus(); return; }
+    if (this._scanT) clearTimeout(this._scanT);
+    if (this._barT) clearTimeout(this._barT);
+    this.setState({ scanning: true, scanResult: null, barsIn: false });
+    this._scanT = setTimeout(() => {
+      let h = 0; for (const c of raw.toLowerCase()) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+      const pick = (min, max, salt) => Math.round(min + ((h * (salt * 97 + 13)) % 997) / 997 * (max - min));
+      const metrics = [
+        { label: 'SEO & aparecer no Google', score: pick(14, 38, 1) },
+        { label: 'Velocidade de carregamento', score: pick(22, 47, 2) },
+        { label: 'Experiência no celular', score: pick(18, 44, 3) },
+        { label: 'Conversão de visitantes', score: pick(11, 33, 4) },
+        { label: 'Uso de IA & automação', score: pick(4, 26, 5) },
+      ];
+      const overall = Math.round(metrics.reduce((a, m) => a + m.score, 0) / metrics.length);
+      const label = raw.replace(/^https?:\/\//i, '').replace(/\/.*$/, '');
+      this.setState({ scanning: false, barsIn: false, scanResult: { metrics, overall, label } });
+      this._barT = setTimeout(() => this.setState({ barsIn: true }), 60);
+    }, 2100);
+  }
+
+  renderVals() {
+    const wa = (m) => 'https://wa.me/5543999446606?text=' + encodeURIComponent(m);
+    return {
+      headerRef: this.headerRef,
+      waOrcamento: wa('Olá! Cliquei em "Solicitar Orçamento" no site da WebKeeper. Gostaria de um orçamento.'),
+      waSolucoes: wa('Olá! Cliquei em "Conhecer Soluções" no site da WebKeeper.'),
+      waEspecialista: wa('Olá! Cliquei em "Falar com Especialista" no site da WebKeeper.'),
+      waIA: wa('Olá! Cliquei em "Explorar Soluções de IA" no site da WebKeeper.'),
+      waDiagnostico: wa('Olá! Cliquei em "Solicitar Diagnóstico Gratuito" no site da WebKeeper.'),
+      waProjetos: wa('Olá! Cliquei em "Ver todos os projetos" no site da WebKeeper.'),
+      waFloat: wa('Olá! Vim pelo site da WebKeeper e gostaria de conversar.'),
+      navLinks: [
+        { label: 'Início', href: '#' }, { label: 'Cenário', href: '#cenario' }, { label: 'Serviços', href: '#servicos' },
+        { label: 'IA', href: '#ia' }, { label: 'Processo', href: '#processo' }, { label: 'Sobre', href: '#sobre' },
+        { label: 'Projetos', href: '#projetos' }, { label: 'Diagnóstico', href: '#diagnostico' }, { label: 'FAQ', href: '#faq' },
+        { label: 'Contato', href: '#contato' }
+      ],
+      trustItems: [
+        { label: 'Soluções Personalizadas', icon: 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z', ...this.pal.purple },
+        { label: 'Tecnologia de Ponta', icon: 'M13 2 3 14h7l-1 8 10-12h-7z', ...this.pal.cyan },
+        { label: 'Suporte Contínuo', icon: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 7v5l3 3', ...this.pal.green }
+      ],
+      services: this.servicesData,
+      pillars: this.pillarsData.map((p, i) => {
+        const open = this.state.openPillar === i;
+        return { ...p, open,
+          chev: open ? 'rotate(45deg)' : 'rotate(0deg)',
+          bodyMaxH: open ? '560px' : '0px',
+          bodyOpacity: open ? '1' : '0',
+          border: open ? p.colorSoft : 'rgba(74,134,255,.12)',
+          toggle: () => this.setState(s => ({ openPillar: s.openPillar === i ? -1 : i })) };
+      }),
+      statsTop: [
+        { value: 93, prefix: '', suffix: '%', label: 'dos consumidores pesquisam online antes de comprar ou contratar', icon: 'M21 21l-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z', ...this.aiPalette.blue },
+        { value: 82, prefix: '', suffix: '%', label: 'dos brasileiros compram online pelo menos uma vez por mês', icon: 'M6 6h15l-1.5 9h-12zM6 6L5 3H2m4 3l1.5 9m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm9 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4z', ...this.aiPalette.cyan },
+        { value: 13, prefix: '', suffix: 'x', label: 'foi o crescimento das vendas online das PMEs (2019→2024)', icon: 'M3 17l6-6 4 4 8-8M15 7h6v6', ...this.aiPalette.orange },
+        { value: 37, prefix: '', suffix: '/80', label: 'é a maturidade digital média das PMEs — longe do ideal', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z', ...this.aiPalette.green }
+      ],
+      timelineData: [
+        { year: '2019', h: '9%',   val: 'R$5bi',  barBg: 'linear-gradient(180deg,#5a93ff,#2f6fed)', glow: 'rgba(74,134,255,.7)' },
+        { year: '2020', h: '22%',  val: '',        barBg: 'rgba(74,134,255,.32)', glow: 'rgba(74,134,255,.3)' },
+        { year: '2021', h: '42%',  val: '',        barBg: 'rgba(90,147,255,.45)', glow: 'rgba(74,134,255,.35)' },
+        { year: '2022', h: '62%',  val: '',        barBg: 'rgba(255,138,61,.5)',  glow: 'rgba(255,138,61,.4)' },
+        { year: '2023', h: '82%',  val: '',        barBg: 'rgba(255,138,61,.72)', glow: 'rgba(255,138,61,.55)' },
+        { year: '2024', h: '100%', val: 'R$67bi', barBg: 'linear-gradient(180deg,#ff8a3d,#ff5470)', glow: 'rgba(255,138,61,.85)' }
+      ],
+      progressRingRef: this.progressRingRef,
+      analyzerRef: this.analyzerRef,
+      scanning: this.state.scanning,
+      runScan: () => this.runScan(),
+      onScanKey: (e) => { if (e.key === 'Enter') this.runScan(); },
+      hasResult: !!this.state.scanResult && !this.state.scanning,
+      scanLabel: this.state.scanResult ? this.state.scanResult.label : '',
+      scanOverall: this.state.scanResult ? this.state.scanResult.overall : 0,
+      scanGrade: (() => {
+        const o = this.state.scanResult ? this.state.scanResult.overall : 0;
+        return o < 25 ? 'Crítico' : o < 40 ? 'Fraco' : 'Precisa melhorar';
+      })(),
+      scanMsg: (() => {
+        const r = this.state.scanResult;
+        if (!r) return '';
+        return 'O site "' + r.label + '" está deixando clientes na mesa todos os dias. A boa notícia: dá para reverter isso rápido.';
+      })(),
+      scanMetrics: (() => {
+        const r = this.state.scanResult;
+        if (!r) return [];
+        const barsIn = this.state.barsIn;
+        return r.metrics.map(m => {
+          const col = m.score < 25 ? '#ff5470' : m.score < 40 ? '#ff8a3d' : '#4a86ff';
+          return { label: m.label, score: m.score, color: col, width: (barsIn ? m.score : 0) + '%' };
+        });
+      })(),
+      waFix: wa('Olá! Fiz o Diagnóstico Digital no site da WebKeeper e quero melhorar a estrutura do meu site.'),
+      scanChecklist: [
+        { title: 'Aparecer no Google quando buscam por você', icon: 'M21 21l-4.3-4.3M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14z' },
+        { title: 'Velocidade e experiência no celular', icon: 'M7 2h10a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1zM11 18h2' },
+        { title: 'Transformar visitantes em clientes', icon: 'M20 6L9 17l-5-5' },
+        { title: 'Uso de IA e automação no atendimento', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z' },
+        { title: 'Presença e reputação nas redes sociais', icon: 'M18 8a3 3 0 1 0-2.8-4H15L9 7v1M18 8a3 3 0 0 1 0 6M9 8v8m0-8L4 6M6 21a3 3 0 1 1 0-6' }
+      ],
+      processSteps: [
+        { n: '01', title: 'Planejamento', desc: 'Entendemos o negócio, seus objetivos e definimos a melhor estratégia.' },
+        { n: '02', title: 'Arquitetura', desc: 'Criamos a arquitetura ideal do sistema com foco em escalabilidade e segurança.' },
+        { n: '03', title: 'Desenvolvimento', desc: 'Desenvolvemos com as melhores tecnologias e padrões do mercado.' },
+        { n: '04', title: 'Implantação', desc: 'Testes rigorosos e implantação segura para garantir performance.' },
+        { n: '05', title: 'Suporte', desc: 'Suporte contínuo e evolução constante do sistema.' }
+      ],
+      projects: this.projectsData,
+      whyCards: this.whyCards,
+      aboutParas: this.aboutParas,
+      pricingPoints: this.pricingPoints,
+      waAbout: wa('Olá! Quero conhecer melhor a WebKeeper e conversar sobre uma ideia.'),
+      waProposta: wa('Olá! Quero solicitar uma proposta personalizada com a WebKeeper.'),
+      faqs: this.faqData.map((f, i) => {
+        const open = this.state.openFaq === i;
+        return { ...f, open,
+          chev: open ? 'rotate(45deg)' : 'rotate(0deg)',
+          bodyMaxH: open ? '260px' : '0px',
+          bodyOpacity: open ? '1' : '0',
+          border: open ? 'rgba(74,134,255,.4)' : 'rgba(255,255,255,.08)',
+          toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })) };
+      }),
+      aiChips: (() => {
+        const R = React.createElement;
+        const P = (key, d, extra) => R('path', { key, d, ...(extra || {}) });
+        const C = (key, cx, cy, r, extra) => R('circle', { key, cx, cy, r, ...(extra || {}) });
+        const mk = (color, kids) => R('svg', { width: 34, height: 34, viewBox: '0 0 24 24', fill: 'none', stroke: color, strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }, kids);
+        const cyan = this.aiPalette.cyan.color, orange = this.aiPalette.orange.color, blue = this.aiPalette.blue.color, green = this.aiPalette.green.color, purple = this.aiPalette.purple.color;
+        // 1 — Neural brain
+        const brain = mk(cyan, [
+          P(1, 'M12 5.4a2.6 2.6 0 0 0-4.9-1.2A2.4 2.4 0 0 0 4.5 7a2.5 2.5 0 0 0-.5 4.3A2.6 2.6 0 0 0 5 16a2.5 2.5 0 0 0 3.6 1.9A2.5 2.5 0 0 0 12 19.4'),
+          P(2, 'M12 5.4a2.6 2.6 0 0 1 4.9-1.2A2.4 2.4 0 0 1 19.5 7a2.5 2.5 0 0 1 .5 4.3A2.6 2.6 0 0 1 19 16a2.5 2.5 0 0 1-3.6 1.9A2.5 2.5 0 0 1 12 19.4'),
+          P(3, 'M12 5.4V19.4'),
+          P(4, 'M8.4 8.4a2 2 0 0 0 2 2M15.6 8.4a2 2 0 0 1-2 2M9 14.2a2 2 0 0 1 2-2M15 14.2a2 2 0 0 0-2-2', { opacity: .6 })
+        ]);
+        // 2 — Chat / AI agent bubble
+        const chat = mk(orange, [
+          P(1, 'M4 6.2A2.2 2.2 0 0 1 6.2 4h11.6A2.2 2.2 0 0 1 20 6.2v7.6A2.2 2.2 0 0 1 17.8 16H9l-4.2 3.8a.5.5 0 0 1-.8-.4z'),
+          C(2, 8.5, 10, 1, { fill: orange, stroke: 'none' }),
+          C(3, 12, 10, 1, { fill: orange, stroke: 'none' }),
+          C(4, 15.5, 10, 1, { fill: orange, stroke: 'none' })
+        ]);
+        // 3 — Shield with target core (secure LLM integration)
+        const shield = mk(blue, [
+          P(1, 'M12 3l7 2.6v4.9c0 4.4-2.9 7.4-7 8.9-4.1-1.5-7-4.5-7-8.9V5.6z'),
+          C(2, 12, 10.6, 3.1),
+          C(3, 12, 10.6, 0.7, { fill: blue, stroke: 'none' })
+        ]);
+        // 4 — Rising chart / predictions
+        const chart = mk(green, [
+          P(1, 'M4 20h16'),
+          P(2, 'M7 20v-4.5M11.5 20v-7.5M16 20v-3.5'),
+          P(3, 'M4.5 12.5 9 9l3 2 6.5-5.2'),
+          P(4, 'M15.5 5.8H19v3.4')
+        ]);
+        // 5 — Stacked layers / intelligent flows
+        const layers = mk(purple, [
+          P(1, 'M12 3 3 7.5 12 12l9-4.5z'),
+          P(2, 'M3 12l9 4.5 9-4.5', { opacity: .8 }),
+          P(3, 'M3 16.5 12 21l9-4.5', { opacity: .55 })
+        ]);
+        return [
+          { label: 'Automação Inteligente', iconEl: brain, ...this.aiPalette.cyan },
+          { label: 'Agentes de IA e Chatbots', iconEl: chat, ...this.aiPalette.orange },
+          { label: 'Integração com LLMs', iconEl: shield, ...this.aiPalette.blue },
+          { label: 'Machine Learning e Previsões', iconEl: chart, ...this.aiPalette.green },
+          { label: 'Fluxos Inteligentes', iconEl: layers, ...this.aiPalette.purple }
+        ];
+      })(),
+      socials: [
+        // Facebook
+        { label: 'Facebook', url: 'https://www.facebook.com/webkeeperia/', icon: 'M13.5 21v-8h2.5l.4-3h-2.9V8.1c0-.9.3-1.5 1.6-1.5H16.5V4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3V10H7.3v3H9.8v8h3.7z' },
+        // Instagram
+        { label: 'Instagram', url: 'https://www.instagram.com/webkeeperia', icon: 'M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.2.4.4 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.2-1 .4-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.2-.4-.4-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.2 1-.4 2.2-.4C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.7.1-1.1.1-1.7.2-2.1.4-.5.2-.9.4-1.3.8-.4.4-.6.8-.8 1.3-.2.4-.3 1-.4 2.1C2.6 10 2.6 10.3 2.6 12s0 2-.1 3.2c.1 1.1.2 1.7.4 2.1.2.5.4.9.8 1.3.4.4.8.6 1.3.8.4.2 1 .3 2.1.4 1.2.1 1.6.1 4.7.1s3.5 0 4.7-.1c1.1-.1 1.7-.2 2.1-.4.5-.2.9-.4 1.3-.8.4-.4.6-.8.8-1.3.2-.4.3-1 .4-2.1.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.1-1.1-.2-1.7-.4-2.1-.2-.5-.4-.9-.8-1.3-.4-.4-.8-.6-1.3-.8-.4-.2-1-.3-2.1-.4C15.5 4 15.1 4 12 4zm0 3.1a4.9 4.9 0 1 0 0 9.8 4.9 4.9 0 0 0 0-9.8zm0 8.1a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zm6.2-8.3a1.1 1.1 0 1 1-2.3 0 1.1 1.1 0 0 1 2.3 0z' },
+        // LinkedIn
+        { label: 'LinkedIn', url: 'https://www.linkedin.com/company/webkeeper', icon: 'M6.9 8.8H3.6V21h3.3V8.8zM5.2 3.4a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM21 21h-3.3v-6c0-1.5-.5-2.5-1.8-2.5-1 0-1.6.7-1.9 1.3-.1.3-.1.6-.1.9V21H10.6s.1-11 0-12.2h3.3v1.7c.4-.7 1.2-1.7 3-1.7 2.2 0 3.9 1.4 3.9 4.5V21z' },
+        // WhatsApp
+        { label: 'WhatsApp', url: wa('Olá! Vim pelo site da WebKeeper e gostaria de conversar.'), icon: 'M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3 .9.9-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.2-.3.2-.5.1-.7-.3-1.4-.7-2-1.3-.5-.5-1-1.1-1.4-1.7-.1-.2 0-.4.1-.5l.4-.4c.1-.2.2-.3.2-.5.1-.2 0-.4 0-.5-.1-.1-.5-1.3-.7-1.8-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3-.6.6-.9 1.3-.9 2.1 0 1.2.9 2.4 1 2.6.1.2 1.8 2.9 4.5 3.9.6.3 1.1.4 1.5.6.6.2 1.2.1 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.2-.4-.3z' }
+      ],
+      footerCols: [
+        { title: 'Serviços', links: [
+          { label: 'IA e Automação', href: '#servicos' },
+          { label: 'Desenvolvimento Web', href: '#servicos' },
+          { label: 'SEO & Marketing', href: '#servicos' },
+          { label: 'Integrações', href: '#servicos' },
+          { label: 'Soluções Personalizadas', href: '#servicos' }
+        ] },
+        { title: 'Empresa', links: [
+          { label: 'Sobre Nós', href: '#sobre' },
+          { label: 'Projetos', href: '#projetos' },
+          { label: 'Diagnóstico Gratuito', href: '#diagnostico' },
+          { label: 'FAQ', href: '#faq' },
+          { label: 'Contato', href: '#contato' }
+        ] }
+      ],
+      cursorDotRef: this.cursorDotRef,
+      cursorRingRef: this.cursorRingRef,
+      eyesRef: this.eyesRef,
+      orbRef: this.orbRef,
+      loaderRef: this.loaderRef,
+      loaderShapeRef: this.loaderShapeRef,
+      loaderTextRef: this.loaderTextRef,
+      loaderWaveRef: this.loaderWaveRef,
+      bgCanvasRef: this.bgCanvasRef,
+      timelineLineRef: this.timelineLineRef
+    };
+  }
+}
+
 </script>
 </body>
 </html>
