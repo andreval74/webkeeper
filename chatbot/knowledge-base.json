@@ -1,0 +1,81 @@
+{
+  "empresa": {
+    "nome": "WebKeeper",
+    "responsavel": "André Val",
+    "resumo": "A WebKeeper desenvolve soluções digitais sob medida — sistemas, automações, IA e Web3 — projetadas para gerar impacto real desde o primeiro dia, sem complexidade desnecessária.",
+    "contato": {
+      "whatsapp": "(43) 99944-6606",
+      "email": "andreval74@gmail.com",
+      "site": "webkeeper.com.br"
+    }
+  },
+  "saudacao": "Olá! 👋 Eu sou o assistente virtual da WebKeeper. Posso te contar sobre nossos serviços (sistemas, sites, SEO, automações, Web3) ou já te ajudar a falar com o André. O que você quer saber?",
+  "fallback": "Não tenho certeza se posso responder isso com precisão, mas já anotei sua pergunta. Pode me passar seu nome e um telefone ou e-mail que o André retorna o contato rapidinho?",
+  "faq": [
+    {
+      "id": "quem-somos",
+      "keywords": ["quem", "webkeeper", "empresa", "o que é", "o que vocês fazem", "sobre"],
+      "resposta": "A WebKeeper nasceu para resolver um problema comum: tecnologias que prometem muito e entregam pouco. Desenvolvemos sistemas, automações, IA e soluções Web3 sob medida, pensadas para gerar impacto real desde o primeiro dia — sem enrolação e sem desperdício."
+    },
+    {
+      "id": "quem-e-andre",
+      "keywords": ["andré", "andre val", "quem atende", "quem desenvolve", "fundador", "dono"],
+      "resposta": "Por trás da WebKeeper está o André Val — desenvolvedor full stack, especialista em automação, IA e Web3, com experiência criando sistemas, plataformas e smart contracts nos padrões da Ethereum Foundation. É ele quem conduz cada etapa do projeto: análise, arquitetura, desenvolvimento, integração e implementação. Quando você contrata a WebKeeper, é o André quem executa."
+    },
+    {
+      "id": "consultoria-ti",
+      "keywords": ["consultoria", "estratégia digital", "auditoria tecnológica", "planejamento digital", "arquitetura de soluções"],
+      "resposta": "Fazemos consultoria em TI com auditoria tecnológica, planejamento digital e arquitetura de soluções — apoio técnico e direcionamento estratégico para decisões mais seguras e alinhadas ao crescimento da empresa."
+    },
+    {
+      "id": "sistemas",
+      "keywords": ["sistema", "software", "aplicação web", "api", "integração", "sob medida", "ferramenta interna"],
+      "resposta": "Desenvolvemos sistemas e aplicações web sob medida: sistemas internos, integrações via API, ferramentas específicas por demanda e soluções web de alta performance. O foco é automação, controle e eficiência operacional para o seu negócio."
+    },
+    {
+      "id": "sites",
+      "keywords": ["site", "website", "landing page", "página de captura", "institucional"],
+      "resposta": "Criamos websites profissionais com foco em conversão: sites institucionais, landing pages e páginas de captura, com estrutura otimizada para SEO. O objetivo é mais visibilidade, mais leads e mais resultado."
+    },
+    {
+      "id": "seo",
+      "keywords": ["seo", "google", "ranqueamento", "tráfego orgânico", "aparecer no google"],
+      "resposta": "Fazemos auditoria SEO, otimização técnica e relatórios com insights para você ter tráfego qualificado e uma visão clara dos resultados do seu site."
+    },
+    {
+      "id": "marketing",
+      "keywords": ["marketing", "tráfego pago", "google ads", "meta ads", "facebook ads", "instagram ads", "linkedin ads", "anúncio"],
+      "resposta": "Cuidamos de gestão de tráfego com campanhas estratégicas orientadas por dados: Google Ads, Meta Ads e LinkedIn Ads, com monitoramento e otimização contínua — buscando aquisição qualificada e ROI elevado."
+    },
+    {
+      "id": "design",
+      "keywords": ["design", "material gráfico", "infográfico", "apresentação corporativa", "identidade visual"],
+      "resposta": "Também produzimos design visual para materiais corporativos: infográficos, materiais gráficos e apresentações — comunicação visual profissional que passa autoridade e clareza para o seu negócio."
+    },
+    {
+      "id": "automacoes-ia",
+      "keywords": ["automação", "automatizar", "chatbot", "ia", "inteligência artificial", "fluxo automatizado"],
+      "resposta": "Criamos automações inteligentes e chatbots com IA: fluxos automatizados via APIs e conexão entre sistemas internos e externos. O resultado é redução de custos e aumento de produtividade — aliás, é exatamente esse tipo de solução que você está usando agora, neste chat 😉."
+    },
+    {
+      "id": "web3",
+      "keywords": ["web3", "blockchain", "smart contract", "token", "tokenização", "nft", "erc-20", "erc-721", "erc-1155", "criptomoeda"],
+      "resposta": "Somos especialistas em blockchain, smart contracts (ERC-20, ERC-721, ERC-1155) e tokenização de ativos, além de NFTs e utilidades digitais. Também oferecemos consultoria e arquitetura Web3 completa, seguindo os padrões oficiais da Ethereum Foundation."
+    },
+    {
+      "id": "orcamento",
+      "keywords": ["orçamento", "preço", "valor", "quanto custa", "contratar", "proposta"],
+      "resposta": "Cada projeto é orçado sob medida, de acordo com escopo e complexidade. Me passa seu nome e um contato (telefone ou e-mail) que o André retorna com uma proposta personalizada."
+    },
+    {
+      "id": "contato",
+      "keywords": ["contato", "falar com alguém", "atendente", "humano", "whatsapp", "telefone", "e-mail"],
+      "resposta": "Claro! Me passa seu nome e um telefone ou e-mail de contato que o André entra em contato com você em breve."
+    },
+    {
+      "id": "prazo",
+      "keywords": ["prazo", "tempo de entrega", "quanto tempo demora", "duração do projeto"],
+      "resposta": "O prazo varia conforme o escopo do projeto. Projetos pontuais costumam ser mais rápidos; sistemas maiores e integrações levam mais tempo de planejamento. Me conta um pouco do que você precisa e um contato seu que o André te dá um prazo mais preciso."
+    }
+  ]
+}
