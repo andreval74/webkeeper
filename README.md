@@ -1,33 +1,46 @@
-# WebKeeper — André Val
+# WebKeeper
 
-**Desenvolvedor Full Stack Web3 & Growth Specialist**  
+**Fábrica de Ideias — IA, Automação, Web3, Sistemas e SEO**
 Londrina, Paraná, Brasil · [webkeeper.com.br](https://webkeeper.com.br)
 
-> Tecnologia estratégica que gera resultados reais — Desenvolvimento Full Stack, Blockchain/Web3, Automação com IA, Smart Contracts e Marketing Digital.
+> Você traz o desafio, nós entramos como parceiros: IA, automação, desenvolvimento, Web3 e SEO para tirar do papel e escalar. Atendimento 100% pelo WhatsApp, 24/7.
 
 ---
 
 ## Sobre o Projeto
 
-Site profissional de André Luiz Campos Val (André Val), desenvolvedor autônomo especializado em soluções digitais completas. O site apresenta os serviços, diferenciais, tecnologias utilizadas e canais de contato.
+Site institucional da WebKeeper, agência/parceira de tecnologia que atua como "fábrica de ideias": desenvolvimento de sistemas, automação com IA, chatbots, Web3/Smart Contracts, marketing digital e SEO. A página é uma landing one-page com diagnóstico digital interativo, chatbot de atendimento com captura de leads por e-mail e galeria de clientes.
 
-**Stack:** HTML5 · CSS3 · JavaScript (Vanilla) · Google Fonts (DM Sans)  
-**Deploy:** GitHub Pages → `webkeeper.com.br`
+**Stack:** HTML5 · CSS3 (inline) · JavaScript · React (via `support.js`) · GSAP + ScrollTrigger (animações) · Google Fonts (Sora + Inter) · PHP (endpoint de leads)
+**Deploy:** publicação estática em `webkeeper.com.br`
 
 ---
 
-## Serviços
+## Seções da Página (`index.html`)
 
-| Serviço | Descrição |
+| Âncora | Seção |
 |---|---|
-| Desenvolvimento de Sistemas | Aplicações web sob medida, integrações via API, sistemas internos |
-| Automação & Chatbots com IA | Fluxos automatizados, chatbots com IA treinada, integração de processos |
-| Blockchain & Web3 | Smart Contracts (ERC-20/721/1155), tokenização, NFTs, arquitetura descentralizada |
-| Marketing Digital | Google Ads, Meta Ads, LinkedIn Ads, gestão de tráfego pago |
-| SEO & Inteligência de Dados | Auditoria SEO, otimização técnica, relatórios e insights |
-| Websites & Landing Pages | Sites institucionais, páginas de alta conversão, e-commerce |
-| Consultoria em TI | Planejamento digital, arquitetura de soluções, estratégia tecnológica |
-| Design Visual | Infográficos, materiais corporativos, apresentações |
+| `#cenario` | Estatísticas do mercado digital (PMEs, crescimento de vendas online) |
+| `#servicos` | Pilares de serviço (sistemas, automação/IA, Web3, marketing, SEO) |
+| `#ia` | Banda de Inteligência Artificial (chips de soluções de IA) |
+| `#processo` | Timeline do processo (planejamento → suporte) |
+| `#sobre` | Sobre a WebKeeper, diferenciais ("Por que a WebKeeper") e modelo de parceria |
+| `#projetos` | Cards de projetos/soluções (dashboard, SaaS, rede, landing page) |
+| `#clientes` | Marquee com logos de clientes que já confiaram no trabalho |
+| `#diagnostico` | **Diagnóstico Digital** — simulador de análise do site do visitante, com CTA via WhatsApp |
+| `#investimento` | Modelo de investimento/proposta sob medida |
+| `#faq` | Perguntas frequentes (accordion) |
+| `#contato` | CTA final + rodapé com redes sociais e links institucionais |
+
+Todo o conteúdo (textos, ícones, dados dos cards) fica em objetos JS dentro do próprio `index.html` (arrays como `pillars`, `projects`, `clientLogos`, `faqs`, `footerCols`, etc.), renderizados via componentes `sc-for`/`sc-if`.
+
+---
+
+## Chatbot & Captura de Leads
+
+- `chatbot/chatbot.js` + `chatbot/chatbot.css` — widget de chat injetado em `#wk-chatbot-root`, presente em todas as páginas.
+- `chatbot/knowledge-base.json` — base de respostas/conhecimento do chatbot.
+- `send-chat-lead.php` — recebe o payload do chat (contato informado, página de origem, transcrição da conversa) via POST JSON e envia por e-mail para `contato@webkeeper.com.br`.
 
 ---
 
@@ -35,31 +48,25 @@ Site profissional de André Luiz Campos Val (André Val), desenvolvedor autônom
 
 ```
 webkeeper/
-├── index.html          ← página principal (HTML + CSS + JS tudo inline)
-├── robots.txt          ← instruções para crawlers/buscadores
-├── sitemap.xml         ← mapa do site para Google Search Console
-├── .gitignore
+├── index.html                    ← página principal (site atual em produção)
+├── index1.html / index2.html     ← versões anteriores/rascunhos da página
+├── support.js                    ← runtime dos componentes (React + helpers) usado pelo index.html
+├── send-chat-lead.php            ← endpoint de recebimento de leads do chatbot
+├── politica-de-privacidade.html
+├── termos-de-uso.html
+├── robots.txt
+├── sitemap.xml
 ├── README.md
-└── img/
-    ├── andre-profissional.jpg    ← foto do desenvolvedor
-    ├── computador.webp           ← imagem de dashboard / OG image
-    ├── logo-webkeeper.svg        ← logo
-    ├── icon-whatsapp.svg
-    ├── icon-github.svg
-    ├── icon-linkedin.svg
-    ├── icon-instagram.svg
-    ├── icon-email.svg
-    ├── tech-react.svg
-    ├── tech-nodes.svg
-    ├── tech-ai.svg
-    ├── tech-db.svg
-    ├── tech-evm.svg              ← ícone blockchain/EVM
-    ├── tech-backend.svg
-    ├── thumb-auto.svg
-    ├── thumb-ia.svg
-    ├── thumb-web.svg
-    ├── thumb-ideia.svg
-    └── ...
+├── chatbot/
+│   ├── chatbot.js
+│   ├── chatbot.css
+│   └── knowledge-base.json
+├── images/                       ← imagens usadas pelo index.html atual
+│   ├── clients/                  ← logos da galeria de clientes (#clientes)
+│   ├── wk-logo.png / wk-og.png / wk-core.png / wk-hero.png
+│   ├── solucao-*.png             ← mockups da seção de Projetos
+│   └── tech-*.svg
+└── img/                          ← imagens de versões anteriores do site
 ```
 
 ---
@@ -69,11 +76,13 @@ webkeeper/
 1. Abra a pasta no VS Code
 2. Edite `index.html` diretamente (CSS e JS estão inline no mesmo arquivo)
 3. Abra no navegador para visualizar (ou use a extensão **Live Server** no VS Code)
-4. Para alterar conteúdo de texto: busque pelo trecho exato no arquivo
+4. Para alterar conteúdo de texto: busque pelo trecho exato ou pelo array correspondente (ex.: `pillarsData`, `projectsData`, `clientLogos`, `faqData`) perto do fim do arquivo
 
 **Campos importantes para atualizar:**
-- WhatsApp: buscar `5543999446606` → substituir se o número mudar
-- Redes sociais: buscar `andreval74` nos `href` do footer
+- WhatsApp: buscar `5543999446606` → substituir se o número mudar (usado pela função `wa(...)`)
+- E-mail de leads do chatbot: buscar `contato@webkeeper.com.br` em `send-chat-lead.php`
+- Redes sociais: buscar `webkeeperia` (Instagram/Facebook) e `linkedin.com/company/webkeeper`
+- Logos de clientes: adicionar arquivo em `images/clients/` e referenciar no array `clientLogos`
 - Copyright: buscar `© 2026`
 
 ---
@@ -86,34 +95,37 @@ git commit -m "descrição da mudança"
 git push
 ```
 
-GitHub Pages publica automaticamente em ~1 minuto.
-
-**Após o primeiro deploy**, registrar no [Google Search Console](https://search.google.com/search-console):
-1. Adicionar propriedade `webkeeper.com.br`
-2. Verificar ownership via DNS ou arquivo HTML
-3. Submeter `https://webkeeper.com.br/sitemap.xml`
+**Após alterações,** revalidar no [Google Search Console](https://search.google.com/search-console):
+1. Propriedade `webkeeper.com.br` já registrada
+2. Submeter novamente `https://webkeeper.com.br/sitemap.xml` se houver novas URLs
 
 ---
 
 ## SEO Implementado
 
-- `<title>` keyword-rich (André Val + serviços + localização)
-- `<meta name="description">` com 155 chars e palavras-chave principais
-- Open Graph (Facebook, LinkedIn, WhatsApp preview)
-- Twitter Card
-- Geo meta tags (Londrina, PR, BR) para SEO local
-- `<link rel="canonical">` apontando para o domínio definitivo
-- Schema.org JSON-LD: `Person`, `ProfessionalService`, `WebSite`, `FAQPage`
-- `robots.txt` permitindo indexação completa
+- `<title>` e `<meta name="description">` orientados a palavras-chave (IA, automação, sites, SEO)
+- Open Graph (Facebook, LinkedIn, WhatsApp preview) e Twitter Card com imagem `images/wk-og.png`
+- Geo/idioma: `pt-BR`, `theme-color`
+- `<link rel="canonical">` para `https://www.webkeeper.com.br/`
+- Schema.org JSON-LD: `Organization`/`ProfessionalService`, `WebSite`, `Service`
+- `robots.txt` liberando indexação + apontando para `sitemap.xml`
 - `sitemap.xml` para submissão no Google Search Console
+
+---
+
+## Páginas Legais
+
+- `politica-de-privacidade.html`
+- `termos-de-uso.html`
 
 ---
 
 ## Contato
 
-**André Luiz Campos Val — André Val**  
-WhatsApp: [(43) 99944-6606](https://wa.me/5543999446606)  
-E-mail: [andreval74@gmail.com](mailto:andreval74@gmail.com)  
-Site: [webkeeper.com.br](https://webkeeper.com.br)  
-GitHub: [github.com/AndreVal74](https://github.com/AndreVal74)  
-LinkedIn: [linkedin.com/in/andreval74](https://www.linkedin.com/in/andreval74)
+**WebKeeper**
+WhatsApp: [(43) 99944-6606](https://wa.me/5543999446606)
+E-mail: [contato@webkeeper.com.br](mailto:contato@webkeeper.com.br)
+Site: [webkeeper.com.br](https://webkeeper.com.br)
+Instagram: [instagram.com/webkeeperia](https://www.instagram.com/webkeeperia)
+Facebook: [facebook.com/webkeeperia](https://www.facebook.com/webkeeperia/)
+LinkedIn: [linkedin.com/company/webkeeper](https://www.linkedin.com/company/webkeeper)
