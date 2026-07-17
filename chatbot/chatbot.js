@@ -8,8 +8,15 @@
     kb: null,
     open: false,
     messages: [],
+    stage: 'chat', // 'chat' -> 'ask_name' -> 'ask_contact' -> back to 'chat' (com lead capturado)
+    firstAnswerGiven: false,
+    answeredFaqIds: {},
+    lastBotIntent: null,
     missCount: 0,
-    awaitingContact: false
+    nameAttempts: 0,
+    contactAttempts: 0,
+    name: null,
+    contact: null
   };
 
   var HUMAN_TRIGGERS = ['falar com alguém', 'falar com alguem', 'atendente', 'humano', 'pessoa real', 'suporte humano'];
@@ -74,6 +81,10 @@
     return d.innerHTML;
   }
 
+  function firstName(full) {
+    return (full || '').trim().split(/\s+/)[0];
+  }
+
   function matchFaq(question) {
     if (!state.kb) return null;
     var q = question.toLowerCase();
@@ -93,6 +104,119 @@
     return HUMAN_TRIGGERS.some(function (t) { return q.indexOf(t) !== -1; });
   }
 
+  // Heurística leve: texto parece pergunta/assunto novo (não uma resposta de nome/contato)
+  function looksLikeQuestion(text) {
+    if (/\?/.test(text)) return true;
+    return !!matchFaq(text);
+  }
+
+  function looksLikeContact(text) {
+    var digits = text.replace(/\D/g, '');
+    return digits.length >= 8 || /@/.test(text);
+  }
+
+  // Responde de passagem uma pergunta feita fora de hora (durante coleta de nome/contato),
+  // sem perder o fio da coleta e sem repetir uma FAQ já respondida antes.
+  function answerAsideQuestion(text) {
+    var match = matchFaq(text);
+    if (match) {
+      if (state.answeredFaqIds[match.id]) {
+        addBotMessage('Isso eu já te expliquei aqui em cima — se quiser posso detalhar melhor depois.');
+      } else {
+        state.answeredFaqIds[match.id] = true;
+        addBotMessage(match.resposta);
+      }
+    } else {
+      addBotMessage('Já anoto isso e te retorno em seguida.');
+    }
+  }
+
+  function startLeadCapture() {
+    if (state.name && state.contact) return;
+    state.stage = 'ask_name';
+    state.lastBotIntent = 'ask_name';
+    addBotMessage('Antes de continuar, me diz seu nome? Assim já deixo registrado pro André entrar em contato se precisar.');
+  }
+
+  function handleAskName(text) {
+    if (looksLikeQuestion(text)) {
+      state.nameAttempts++;
+      answerAsideQuestion(text);
+      if (state.nameAttempts <= 2) {
+        addBotMessage('Sem problemas! E me diz, qual seu nome?');
+      } else {
+        state.stage = 'ask_contact';
+        state.nameAttempts = 0;
+        state.lastBotIntent = 'ask_contact';
+        addBotMessage('Tudo bem, sem pressa com isso. Me passa então um WhatsApp ou e-mail pra o André te chamar se precisar?');
+      }
+      return;
+    }
+    state.name = text;
+    state.stage = 'ask_contact';
+    state.nameAttempts = 0;
+    state.lastBotIntent = 'ask_contact';
+    addBotMessage('Prazer, ' + firstName(text) + '! Me passa um WhatsApp ou e-mail pra o André te chamar se precisar.');
+  }
+
+  function handleAskContact(text) {
+    if (looksLikeQuestion(text) && !looksLikeContact(text)) {
+      state.contactAttempts++;
+      answerAsideQuestion(text);
+      if (state.contactAttempts <= 2) {
+        addBotMessage('Consegue me passar um WhatsApp ou e-mail? Assim garanto que o André te retorna.');
+      } else {
+        finalizeLead(text);
+      }
+      return;
+    }
+    finalizeLead(text);
+  }
+
+  function finalizeLead(contactText) {
+    state.contact = looksLikeContact(contactText) ? contactText : (contactText || '(não informado)');
+    state.stage = 'chat';
+    state.contactAttempts = 0;
+    sendLeadSilently();
+    var name = state.name ? firstName(state.name) + ', ' : '';
+    addBotMessage('Show, ' + name + 'já registrei aqui! O André entra em contato. Posso ajudar em mais alguma coisa? 🙂');
+  }
+
+  function handleChatTurn(text) {
+    if (wantsHuman(text)) {
+      state.missCount = 0;
+      addBotMessage('Claro! Posso te colocar em contato direto com o André.');
+      startLeadCapture();
+      return;
+    }
+
+    var match = matchFaq(text);
+    if (match) {
+      state.missCount = 0;
+      if (state.answeredFaqIds[match.id]) {
+        addBotMessage('Já falei sobre isso agora há pouco — quer que eu detalhe algum ponto específico ou tem outra dúvida?');
+      } else {
+        state.answeredFaqIds[match.id] = true;
+        addBotMessage(match.resposta);
+      }
+      state.lastBotIntent = 'faq:' + match.id;
+
+      if (!state.firstAnswerGiven && !state.name) {
+        state.firstAnswerGiven = true;
+        startLeadCapture();
+      }
+      return;
+    }
+
+    state.missCount++;
+    if (state.missCount >= 2) {
+      addBotMessage(state.kb.fallback);
+      startLeadCapture();
+    } else {
+      addBotMessage('Hmm, não tenho certeza sobre isso. Pode reformular ou me contar um pouco mais do que você precisa?');
+    }
+  }
+
   function onSubmit(ev) {
     ev.preventDefault();
     var input = document.getElementById('wk-chat-input');
@@ -101,41 +225,23 @@
     input.value = '';
     addMessage(text, 'user');
 
-    if (state.awaitingContact) {
-      state.awaitingContact = false;
-      sendLeadSilently(text);
-      addBotMessage('Show, já registrei aqui! Alguém da equipe entra em contato em breve. Posso ajudar em mais alguma coisa?');
-      state.missCount = 0;
+    if (state.stage === 'ask_name') {
+      handleAskName(text);
+      return;
+    }
+    if (state.stage === 'ask_contact') {
+      handleAskContact(text);
       return;
     }
 
-    if (wantsHuman(text)) {
-      state.missCount = 0;
-      state.awaitingContact = true;
-      addBotMessage('Claro! Me passa seu nome e um telefone ou e-mail de contato que o André retorna pra você em breve.');
-      return;
-    }
-
-    var match = matchFaq(text);
-    if (match) {
-      state.missCount = 0;
-      addBotMessage(match.resposta);
-      return;
-    }
-
-    state.missCount++;
-    if (state.missCount >= 2) {
-      state.awaitingContact = true;
-      addBotMessage(state.kb.fallback);
-    } else {
-      addBotMessage('Hmm, não tenho certeza sobre isso. Pode reformular ou me contar um pouco mais do que você precisa?');
-    }
+    handleChatTurn(text);
   }
 
-  function sendLeadSilently(contactRaw) {
+  function sendLeadSilently() {
     try {
       var payload = {
-        contact_raw: contactRaw,
+        name: state.name || '',
+        contact_raw: state.contact || '',
         conversation: state.messages,
         page: location.href,
         sentAt: new Date().toISOString()
@@ -145,7 +251,13 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
         keepalive: true
-      }).catch(function () {});
+      }).then(function (r) { return r.json(); }).then(function (data) {
+        if (!data || !data.ok) {
+          console.error('WebKeeper chatbot: o servidor não confirmou o envio do lead.');
+        }
+      }).catch(function (e) {
+        console.error('WebKeeper chatbot: falha ao enviar lead.', e);
+      });
     } catch (e) {}
   }
 

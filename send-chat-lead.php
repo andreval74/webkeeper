@@ -22,6 +22,7 @@ function wk_clean_line($value) {
     return trim($value);
 }
 
+$name = isset($data['name']) ? wk_clean_line($data['name']) : '';
 $contactRaw = isset($data['contact_raw']) ? wk_clean_line($data['contact_raw']) : '';
 $page = isset($data['page']) ? wk_clean_line($data['page']) : '';
 $sentAt = isset($data['sentAt']) ? wk_clean_line($data['sentAt']) : date('c');
@@ -41,6 +42,7 @@ $to = 'contato@webkeeper.com.br';
 $subject = 'Novo lead via chatbot do site';
 
 $body = "Um novo contato veio pelo chatbot do site.\n\n";
+$body .= "Nome: " . $name . "\n";
 $body .= "Contato informado: " . $contactRaw . "\n";
 $body .= "Página: " . $page . "\n";
 $body .= "Data/hora: " . $sentAt . "\n\n";
@@ -57,4 +59,4 @@ if (!$sent) {
     error_log('send-chat-lead.php: falha ao enviar e-mail de lead do chatbot');
 }
 
-echo json_encode(['ok' => true]);
+echo json_encode(['ok' => $sent]);

@@ -751,10 +751,6 @@
     </footer>
   </div>
 
-  <!-- CHATBOT WEBKEEPER -->
-  <link rel="stylesheet" href="./chatbot/chatbot.css">
-  <div id="wk-chatbot-root"></div>
-  <script src="./chatbot/chatbot.js" defer></script>
 </div>
 
 </x-dc>
@@ -1391,5 +1387,10 @@ class Component extends DCLogic {
 }
 
 </script>
+
+<!-- CHATBOT WEBKEEPER (fora do <x-dc> para o script ser executado pelo navegador) -->
+<link rel="stylesheet" href="./chatbot/chatbot.css">
+<div id="wk-chatbot-root"></div>
+<script src="./chatbot/chatbot.js" defer></script>
 </body>
 </html>
