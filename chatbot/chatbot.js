@@ -182,6 +182,50 @@
     addBotMessage('Show, ' + name + 'já registrei aqui! O André entra em contato. Posso ajudar em mais alguma coisa? 🙂');
   }
 
+  function showTyping() {
+    var box = document.getElementById('wk-chat-messages');
+    if (!box || document.getElementById('wk-chat-typing')) return;
+    var bubble = el('div', { id: 'wk-chat-typing', class: 'wk-msg wk-msg-bot wk-typing' },
+      '<span></span><span></span><span></span>');
+    box.appendChild(bubble);
+    box.scrollTop = box.scrollHeight;
+  }
+
+  function hideTyping() {
+    var t = document.getElementById('wk-chat-typing');
+    if (t) t.remove();
+  }
+
+  function setInputDisabled(disabled) {
+    var input = document.getElementById('wk-chat-input');
+    var btn = document.getElementById('wk-chat-send');
+    if (input) input.disabled = disabled;
+    if (btn) btn.disabled = disabled;
+  }
+
+  // Resposta local (sem IA) usada quando a chamada à IA falha ou não está configurada.
+  function localFallbackReply(text) {
+    var match = matchFaq(text);
+    if (match) {
+      if (state.answeredFaqIds[match.id]) {
+        addBotMessage('Já falei sobre isso agora há pouco — quer que eu detalhe algum ponto específico ou tem outra dúvida?');
+      } else {
+        state.answeredFaqIds[match.id] = true;
+        addBotMessage(match.resposta);
+      }
+      state.missCount = 0;
+    } else {
+      state.missCount++;
+      addBotMessage(state.missCount >= 2 ? state.kb.fallback : 'Já anotei sua pergunta, o André te responde direitinho em breve. Tem mais alguma coisa?');
+    }
+    if (!state.firstAnswerGiven && !state.name) {
+      state.firstAnswerGiven = true;
+      startLeadCapture();
+    } else if (state.missCount >= 2 && state.name && state.contact) {
+      state.missCount = 0;
+    }
+  }
+
   function handleChatTurn(text) {
     if (wantsHuman(text)) {
       state.missCount = 0;
@@ -190,31 +234,33 @@
       return;
     }
 
-    var match = matchFaq(text);
-    if (match) {
-      state.missCount = 0;
-      if (state.answeredFaqIds[match.id]) {
-        addBotMessage('Já falei sobre isso agora há pouco — quer que eu detalhe algum ponto específico ou tem outra dúvida?');
-      } else {
-        state.answeredFaqIds[match.id] = true;
-        addBotMessage(match.resposta);
-      }
-      state.lastBotIntent = 'faq:' + match.id;
+    showTyping();
+    setInputDisabled(true);
 
-      if (!state.firstAnswerGiven && !state.name) {
-        state.firstAnswerGiven = true;
-        startLeadCapture();
-      }
-      return;
-    }
+    fetch(BASE + 'chat-reply.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: state.messages, name: state.name || '' })
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      hideTyping();
+      setInputDisabled(false);
+      document.getElementById('wk-chat-input').focus();
 
-    state.missCount++;
-    if (state.missCount >= 2) {
-      addBotMessage(state.kb.fallback);
-      startLeadCapture();
-    } else {
-      addBotMessage('Hmm, não tenho certeza sobre isso. Pode reformular ou me contar um pouco mais do que você precisa?');
-    }
+      if (data && data.ok && data.reply) {
+        state.missCount = 0;
+        addBotMessage(data.reply);
+        if (!state.firstAnswerGiven && !state.name) {
+          state.firstAnswerGiven = true;
+          startLeadCapture();
+        }
+        return;
+      }
+      localFallbackReply(text);
+    }).catch(function () {
+      hideTyping();
+      setInputDisabled(false);
+      localFallbackReply(text);
+    });
   }
 
   function onSubmit(ev) {

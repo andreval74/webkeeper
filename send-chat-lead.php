@@ -59,4 +59,21 @@ if (!$sent) {
     error_log('send-chat-lead.php: falha ao enviar e-mail de lead do chatbot');
 }
 
+$leadsDir = __DIR__ . '/leads';
+if (!is_dir($leadsDir)) {
+    @mkdir($leadsDir, 0755, true);
+}
+$leadRecord = [
+    'name' => $name,
+    'contact_raw' => $contactRaw,
+    'page' => $page,
+    'sentAt' => $sentAt,
+    'conversation' => $conversation,
+];
+@file_put_contents(
+    $leadsDir . '/leads.jsonl',
+    json_encode($leadRecord, JSON_UNESCAPED_UNICODE) . "\n",
+    FILE_APPEND | LOCK_EX
+);
+
 echo json_encode(['ok' => $sent]);

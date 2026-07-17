@@ -17,3 +17,7 @@ desktop.ini
 
 # Serve cache
 .cache/
+
+# Chaves e dados sensíveis do chatbot
+chatbot/groq-config.php
+leads/*.jsonl

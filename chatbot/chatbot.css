@@ -72,6 +72,20 @@
 .wk-msg-bot { align-self: flex-start; background: #23252e; color: #d6d9e6; border-bottom-left-radius: 3px; }
 .wk-msg-user { align-self: flex-end; background: #6b7a4f; color: #eef1e6; border-bottom-right-radius: 3px; }
 
+.wk-typing { display: flex; align-items: center; gap: 4px; padding: 12px; }
+.wk-typing span {
+  width: 6px; height: 6px; border-radius: 50%; background: #7d859f;
+  animation: wk-typing-bounce 1s infinite ease-in-out;
+}
+.wk-typing span:nth-child(2) { animation-delay: .15s; }
+.wk-typing span:nth-child(3) { animation-delay: .3s; }
+@keyframes wk-typing-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: .5; }
+  30% { transform: translateY(-4px); opacity: 1; }
+}
+
+#wk-chat-input:disabled, #wk-chat-send:disabled { opacity: .6; cursor: not-allowed; }
+
 #wk-chat-form {
   display: flex;
   border-top: 1px solid rgba(255,255,255,.06);
