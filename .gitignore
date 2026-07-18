@@ -21,3 +21,6 @@ desktop.ini
 # Chaves e dados sensíveis do chatbot
 chatbot/groq-config.php
 leads/*.jsonl
+
+# Config local do Claude Code (contém credenciais de MCP servers)
+.mcp.json

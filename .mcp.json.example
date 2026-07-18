@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "elementor-mcp": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": ["-y", "@msrbuilds/emcp-proxy@1.8.2"],
+      "env": {
+        "WP_URL": "https://SEU-SITE.com.br",
+        "WP_USERNAME": "SEU_USUARIO",
+        "WP_APP_PASSWORD": "SUA_SENHA_DE_APLICATIVO",
+        "MCP_PROTOCOL_VERSION": "2024-11-05",
+        "MCP_LOG_FILE": "C:\\tmp\\elementor-mcp-debug.log"
+      }
+    },
+    "wordpress-webkeeper": {
+      "type": "stdio",
+      "command": "npx.cmd",
+      "args": ["-y", "claudeus-wp-mcp"],
+      "env": {
+        "WP_SITES_PATH": "C:\\Users\\User\\.claude\\wp-sites.json"
+      }
+    }
+  }
+}

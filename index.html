@@ -531,6 +531,9 @@
         </div>
         <div data-r="clients-marquee" style="overflow:hidden;width:100%;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);">
           <div data-r="clients-track" style="display:flex;gap:20px;width:max-content;">
+            <!-- clientLogos é renderizado duas vezes (cl / cl2) de propósito: a animação
+                 wk-marquee desloca a faixa em -50% e recomeça, então a segunda cópia
+                 preenche o espaço e cria a ilusão de loop contínuo sem "salto". -->
             <sc-for list="{{ clientLogos }}" as="cl" hint-placeholder-count="16">
               <div style="display:flex;align-items:center;justify-content:center;height:74px;width:170px;flex-shrink:0;padding:14px 18px;border-radius:12px;background:{{ cl.bg }};border:1px solid {{ cl.border }};">
                 <img src="{{ cl.logo }}" alt="{{ cl.name }}" title="{{ cl.name }}" style="max-width:100%;max-height:100%;object-fit:contain;opacity:.95;transition:opacity .3s ease,transform .3s ease;" style-hover="opacity:1;transform:scale(1.05);">
@@ -744,8 +747,8 @@
       <div style="max-width:1560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);flex-wrap:wrap;gap:12px;">
         <span style="font-size:12px;color:#5b6280;">© 2026 WebKeeper. Todos os direitos reservados.</span>
         <div style="display:flex;gap:16px;">
-          <a href="./Política de Privacidade.dc.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Política de Privacidade</a>
-          <a href="./Termos de Uso.dc.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Termos de Uso</a>
+          <a href="./politica-de-privacidade.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Política de Privacidade</a>
+          <a href="./termos-de-uso.html" style="font-size:12px;color:#5b6280;" style-hover="color:#c4cae0;">Termos de Uso</a>
         </div>
       </div>
     </footer>
@@ -755,6 +758,10 @@
 
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+// Componente único da landing page: todo o conteúdo (arrays de dados) e a lógica
+// (hero animado, accordions de Serviços/FAQ, scanner de Diagnóstico, lead capture)
+// vivem aqui. renderVals() monta o objeto de props consumido pelo template acima
+// via {{ }} / sc-for / sc-if.
 class Component extends DCLogic {
   constructor(props) {
     super(props);
@@ -764,14 +771,11 @@ class Component extends DCLogic {
     this.eyesRef = React.createRef();
     this.orbRef = React.createRef();
     this.loaderRef = React.createRef();
-    this.loaderShapeRef = React.createRef();
-    this.loaderTextRef = React.createRef();
     this.loaderWaveRef = React.createRef();
     this.timelineLineRef = React.createRef();
-    this.progressRingRef = React.createRef();
     this.headerRef = React.createRef();
     this.analyzerRef = React.createRef();
-    this.state = { activeFilter: null, openPillar: -1, openFaq: -1, scanning: false, scanResult: null, barsIn: false };
+    this.state = { openPillar: -1, openFaq: -1, scanning: false, scanResult: null, barsIn: false };
 
     const blue = { color: '#4a86ff', colorBg: 'rgba(74,134,255,.12)', colorSoft: 'rgba(74,134,255,.4)', colorShadow: 'rgba(74,134,255,.3)' };
     const orange = { color: '#ff8a3d', colorBg: 'rgba(255,138,61,.12)', colorSoft: 'rgba(255,138,61,.4)', colorShadow: 'rgba(255,138,61,.3)' };
@@ -783,21 +787,6 @@ class Component extends DCLogic {
     const chip = (c) => ({ color: c.color, bg: c.colorBg, soft: c.colorSoft, shadow: c.colorShadow });
     this.aiPalette = { cyan: chip(cyan), orange: chip(orange), blue: chip(blue), green: chip(green), purple: chip(purple) };
     this.pal = { blue, orange, cyan, purple, green, pink };
-
-    // Ordered as a natural journey: IA → automação/integrações → dev/web → plataformas → marketing.
-    this.servicesData = [
-      { title: 'Inteligência Artificial', desc: 'Soluções com IA, machine learning e agentes inteligentes para o seu negócio.', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z', ...blue },
-      { title: 'Chatbots', desc: 'Chatbots inteligentes para atendimento, vendas e suporte ao cliente 24/7.', icon: 'M20 4H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3v3l4-3h9a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zM8 10h.01M12 10h.01M16 10h.01', ...blue },
-      { title: 'Automação', desc: 'Automatize tarefas, reduza custos e aumente a produtividade com fluxos inteligentes.', icon: 'M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8', ...cyan },
-      { title: 'Integrações', desc: 'Integramos sistemas, APIs e ferramentas para otimizar toda a sua operação.', icon: 'M10 3.5a1.5 1.5 0 0 1 3 0V5h2.5a1 1 0 0 1 1 1v2.5H18a1.5 1.5 0 0 1 0 3h-1.5V14a1 1 0 0 1-1 1H13v1.5a1.5 1.5 0 0 1-3 0V15H7.5a1 1 0 0 1-1-1v-2.5H5a1.5 1.5 0 0 1 0-3h1.5V6a1 1 0 0 1 1-1H10z', ...pink },
-      { title: 'APIs', desc: 'Desenvolvimento e integração de APIs robustas e seguras para sua aplicação.', icon: 'M8 4l-5 8 5 8M16 4l5 8-5 8', ...green },
-      { title: 'Landing Pages', desc: 'Páginas de alta conversão focadas em performance e resultados reais.', icon: 'M4 4h16v16H4zM4 9h16M9 13l2 2 4-4', ...green },
-      { title: 'Aplicativos Web', desc: 'Sistemas e aplicações web sob medida para os processos da sua empresa.', icon: 'M4 4h16v16H4zM4 9h16M7 6.5h.01M9.5 6.5h.01', ...green },
-      { title: 'WordPress', desc: 'Sites e sistemas profissionais com WordPress, o CMS mais utilizado do mundo.', icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM6.5 8l2.4 8 2.1-5.5M11.5 10.5 13.6 16 16 8', ...purple },
-      { title: 'Elementor', desc: 'Sites modernos, rápidos e escaláveis construídos com Elementor Pro.', icon: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9 8v8M13 8v8M17 8v8', ...purple },
-      { title: 'SaaS', desc: 'Plataformas SaaS escaláveis, seguras e altamente performáticas.', icon: 'M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.6-1.3A3.5 3.5 0 0 1 18 18z', ...purple },
-      { title: 'SEO', desc: 'Estratégias avançadas para posicionar seu site no topo do Google.', icon: 'M11 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12zM20 20l-4.35-4.35', ...orange }
-    ];
 
     this.pillarsData = [
       { num: '01', title: 'IA & Automação', intro: 'Inteligência aplicada e processos automatizados que trabalham por você.', icon: 'M12 2a5 5 0 0 0-5 5v1a4 4 0 0 0-2 7v1a3 3 0 0 0 3 3h1a5 5 0 0 0 10 0h1a3 3 0 0 0 3-3v-1a4 4 0 0 0-2-7V7a5 5 0 0 0-5-5z', ...blue, items: [
@@ -903,10 +892,6 @@ class Component extends DCLogic {
     this.initHeader();
     this.initEyes();
     window.addEventListener('resize', this.handleResize = () => this.resizeAll());
-  }
-
-  toggleFilter(key) {
-    this.setState(s => ({ activeFilter: s.activeFilter === key ? null : key }));
   }
 
   initEyes() {
@@ -1088,12 +1073,6 @@ class Component extends DCLogic {
         scrollTrigger: { trigger: this.timelineLineRef.current, start: 'top 80%' }
       });
     }
-    if (this.progressRingRef.current) {
-      window.ScrollTrigger.create({
-        trigger: this.progressRingRef.current, start: 'top 90%', once: true,
-        onEnter: () => window.gsap.to(this.progressRingRef.current, { strokeDashoffset: 326 * (1 - .5), duration: 1.6, ease: 'power2.out' })
-      });
-    }
     document.querySelectorAll('[data-count]').forEach(el => {
       const target = parseFloat(el.getAttribute('data-count'));
       const suffix = el.getAttribute('data-suffix') || '';
@@ -1154,7 +1133,6 @@ class Component extends DCLogic {
         { label: 'Tecnologia de Ponta', icon: 'M13 2 3 14h7l-1 8 10-12h-7z', ...this.pal.cyan },
         { label: 'Suporte Contínuo', icon: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zM12 7v5l3 3', ...this.pal.green }
       ],
-      services: this.servicesData,
       pillars: this.pillarsData.map((p, i) => {
         const open = this.state.openPillar === i;
         return { ...p, open,
@@ -1178,13 +1156,11 @@ class Component extends DCLogic {
         { year: '2023', h: '82%',  val: '',        barBg: 'rgba(255,138,61,.72)', glow: 'rgba(255,138,61,.55)' },
         { year: '2024', h: '100%', val: 'R$67bi', barBg: 'linear-gradient(180deg,#ff8a3d,#ff5470)', glow: 'rgba(255,138,61,.85)' }
       ],
-      progressRingRef: this.progressRingRef,
       analyzerRef: this.analyzerRef,
       scanning: this.state.scanning,
       runScan: () => this.runScan(),
       onScanKey: (e) => { if (e.key === 'Enter') this.runScan(); },
       hasResult: !!this.state.scanResult && !this.state.scanning,
-      scanLabel: this.state.scanResult ? this.state.scanResult.label : '',
       scanOverall: this.state.scanResult ? this.state.scanResult.overall : 0,
       scanGrade: (() => {
         const o = this.state.scanResult ? this.state.scanResult.overall : 0;
@@ -1377,8 +1353,6 @@ class Component extends DCLogic {
       eyesRef: this.eyesRef,
       orbRef: this.orbRef,
       loaderRef: this.loaderRef,
-      loaderShapeRef: this.loaderShapeRef,
-      loaderTextRef: this.loaderTextRef,
       loaderWaveRef: this.loaderWaveRef,
       bgCanvasRef: this.bgCanvasRef,
       timelineLineRef: this.timelineLineRef

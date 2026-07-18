@@ -49,7 +49,6 @@ Todo o conteúdo (textos, ícones, dados dos cards) fica em objetos JS dentro do
 ```
 webkeeper/
 ├── index.html                    ← página principal (site atual em produção)
-├── index1.html / index2.html     ← versões anteriores/rascunhos da página
 ├── support.js                    ← runtime dos componentes (React + helpers) usado pelo index.html
 ├── send-chat-lead.php            ← endpoint de recebimento de leads do chatbot
 ├── politica-de-privacidade.html
@@ -61,13 +60,12 @@ webkeeper/
 │   ├── chatbot.js
 │   ├── chatbot.css
 │   └── knowledge-base.json
-├── images/                       ← imagens usadas pelo index.html atual
-│   ├── clients/                  ← logos da galeria de clientes (#clientes)
-│   ├── wk-logo.png / wk-og.png / wk-core.png / wk-hero.png
-│   ├── solucao-*.png             ← mockups da seção de Projetos
-│   └── tech-*.svg
-└── img/                          ← imagens de versões anteriores do site
+└── images/                       ← imagens usadas pelo index.html atual
+    ├── clients/                  ← logos da galeria de clientes (#clientes)
+    └── wk-logo.png / wk-og.png / wk-core.png
 ```
+
+Os mockups da seção de Projetos e os ícones da banda de IA são gerados como SVG inline via JS (não são arquivos de imagem).
 
 ---
 
